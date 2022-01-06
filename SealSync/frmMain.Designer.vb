@@ -33,6 +33,7 @@ Partial Class frmMain
         Me.btnSync = New System.Windows.Forms.Button()
         Me.fbdSourceFolder = New System.Windows.Forms.FolderBrowserDialog()
         Me.fbdTargetFolder = New System.Windows.Forms.FolderBrowserDialog()
+        Me.btnAbout = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblHeader
@@ -105,19 +106,30 @@ Partial Class frmMain
         'btnSync
         '
         Me.btnSync.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSync.Location = New System.Drawing.Point(180, 188)
+        Me.btnSync.Location = New System.Drawing.Point(18, 182)
         Me.btnSync.Name = "btnSync"
-        Me.btnSync.Size = New System.Drawing.Size(142, 50)
+        Me.btnSync.Size = New System.Drawing.Size(466, 35)
         Me.btnSync.TabIndex = 7
         Me.btnSync.Text = "Sync now"
         Me.btnSync.UseVisualStyleBackColor = True
+        '
+        'btnAbout
+        '
+        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbout.Location = New System.Drawing.Point(438, 8)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(45, 35)
+        Me.btnAbout.TabIndex = 8
+        Me.btnAbout.Text = "?"
+        Me.btnAbout.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(496, 260)
+        Me.ClientSize = New System.Drawing.Size(496, 229)
+        Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnSync)
         Me.Controls.Add(Me.btnBrowseSourceFolder)
         Me.Controls.Add(Me.btnBrowseTargetFolder)
@@ -148,4 +160,5 @@ Partial Class frmMain
     Friend WithEvents btnSync As Button
     Friend WithEvents fbdSourceFolder As FolderBrowserDialog
     Friend WithEvents fbdTargetFolder As FolderBrowserDialog
+    Friend WithEvents btnAbout As Button
 End Class

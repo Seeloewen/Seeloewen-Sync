@@ -26,4 +26,8 @@
         My.Computer.FileSystem.CopyDirectory(tbSourceFolder.Text, tbTargetFolder.Text)
         MsgBox("Sync completed successfully!", MsgBoxStyle.Information, "Success")
     End Sub
+
+    Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        frmAbout.ShowDialog()
+    End Sub
 End Class
