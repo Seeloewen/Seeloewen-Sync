@@ -12,12 +12,19 @@
     End Sub
 
     Private Sub btnSync_Click(sender As Object, e As EventArgs) Handles btnSync.Click
-        Try
-            Sync()
-        Catch execptionSync As Exception
-            MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
-        End Try
-
+        If String.IsNullOrEmpty(tbSourceFolder.Text & tbTargetFolder.Text) Then
+            MsgBox("Error: Source and target folder cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbTargetFolder.Text) Then
+            MsgBox("Error: Target folder cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbSourceFolder.Text) Then
+            MsgBox("Error: Source folder cannot be empty.", MsgBoxStyle.Critical, "Error")
+        Else
+            Try
+                Sync()
+            Catch execptionSync As Exception
+                MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
+            End Try
+        End If
     End Sub
 
     Private Sub Sync()
