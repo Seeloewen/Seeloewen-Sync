@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Werte der Assemblyattribute überprüfen
 
 <Assembly: AssemblyTitle("SealSync")>
-<Assembly: AssemblyDescription("Simple folder syncronisation program")>
+<Assembly: AssemblyDescription("Simple folder synchronization program")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("SealSync")>
-<Assembly: AssemblyCopyright("Copyright ©  2022 Louis")>
+<Assembly: AssemblyCopyright("Copyright © 2022 Louis")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
