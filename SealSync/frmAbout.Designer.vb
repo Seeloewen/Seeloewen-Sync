@@ -47,7 +47,7 @@ Partial Class frmAbout
         Me.lblVersion.Name = "lblVersion"
         Me.lblVersion.Size = New System.Drawing.Size(371, 29)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "SealSync 0.2-b Build 2201101617"
+        Me.lblVersion.Text = "SealSync 0.2-b Build 2201102048"
         '
         'lblDescription
         '
