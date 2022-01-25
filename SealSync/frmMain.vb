@@ -37,4 +37,8 @@
     Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
         frmAbout.ShowDialog()
     End Sub
+
+    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        frmSettings.ShowDialog()
+    End Sub
 End Class

@@ -34,6 +34,7 @@ Partial Class frmMain
         Me.fbdSourceFolder = New System.Windows.Forms.FolderBrowserDialog()
         Me.fbdTargetFolder = New System.Windows.Forms.FolderBrowserDialog()
         Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblHeader
@@ -115,7 +116,7 @@ Partial Class frmMain
         '
         'btnAbout
         '
-        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAbout.Location = New System.Drawing.Point(438, 8)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(45, 35)
@@ -123,12 +124,24 @@ Partial Class frmMain
         Me.btnAbout.Text = "?"
         Me.btnAbout.UseVisualStyleBackColor = True
         '
+        'btnSettings
+        '
+        Me.btnSettings.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSettings
+        Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSettings.Location = New System.Drawing.Point(387, 8)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(45, 35)
+        Me.btnSettings.TabIndex = 9
+        Me.btnSettings.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(496, 229)
+        Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnSync)
         Me.Controls.Add(Me.btnBrowseSourceFolder)
@@ -161,4 +174,5 @@ Partial Class frmMain
     Friend WithEvents fbdSourceFolder As FolderBrowserDialog
     Friend WithEvents fbdTargetFolder As FolderBrowserDialog
     Friend WithEvents btnAbout As Button
+    Friend WithEvents btnSettings As Button
 End Class
