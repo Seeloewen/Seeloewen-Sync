@@ -12,3 +12,4 @@ C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Debug\SealSync.xml
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Debug\SealSync.pdb
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Debug\SealSync.frmAbout.resources
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Debug\SealSync.frmSettings.resources
