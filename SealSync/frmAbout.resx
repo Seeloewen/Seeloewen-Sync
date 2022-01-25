@@ -129,7 +129,10 @@ You should have received a copy of the GNU General Public License long with this
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Version 0.2-b (10.01.2022)
+    <value>Version 0.3-b (*)
+* Added settings
+
+Version 0.2-b (10.01.2022)
 * Added changelog
 * Added error messages when source or target folder are empty
 * Fixed a bunch of typos in 'synchronize'
