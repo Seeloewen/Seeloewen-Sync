@@ -33,8 +33,11 @@ Partial Class frmMain
         Me.btnSync = New System.Windows.Forms.Button()
         Me.fbdSourceFolder = New System.Windows.Forms.FolderBrowserDialog()
         Me.fbdTargetFolder = New System.Windows.Forms.FolderBrowserDialog()
-        Me.btnAbout = New System.Windows.Forms.Button()
         Me.btnSettings = New System.Windows.Forms.Button()
+        Me.cbxDefaultProfile = New System.Windows.Forms.ComboBox()
+        Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnSaveProfile = New System.Windows.Forms.Button()
+        Me.btnLoadProfile = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lblHeader
@@ -107,40 +110,80 @@ Partial Class frmMain
         'btnSync
         '
         Me.btnSync.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSync.Location = New System.Drawing.Point(18, 182)
+        Me.btnSync.Location = New System.Drawing.Point(18, 209)
         Me.btnSync.Name = "btnSync"
-        Me.btnSync.Size = New System.Drawing.Size(466, 35)
+        Me.btnSync.Size = New System.Drawing.Size(362, 35)
         Me.btnSync.TabIndex = 7
         Me.btnSync.Text = "Sync now"
         Me.btnSync.UseVisualStyleBackColor = True
         '
-        'btnAbout
+        'fbdSourceFolder
         '
-        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAbout.Location = New System.Drawing.Point(438, 8)
-        Me.btnAbout.Name = "btnAbout"
-        Me.btnAbout.Size = New System.Drawing.Size(45, 35)
-        Me.btnAbout.TabIndex = 8
-        Me.btnAbout.Text = "?"
-        Me.btnAbout.UseVisualStyleBackColor = True
+        Me.fbdSourceFolder.Description = "Select the folder where the files should be synchronized from."
+        '
+        'fbdTargetFolder
+        '
+        Me.fbdTargetFolder.Description = "Select the folder where the files should be synchronized to."
         '
         'btnSettings
         '
         Me.btnSettings.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSettings
         Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSettings.Location = New System.Drawing.Point(387, 8)
+        Me.btnSettings.Location = New System.Drawing.Point(388, 209)
         Me.btnSettings.Name = "btnSettings"
         Me.btnSettings.Size = New System.Drawing.Size(45, 35)
         Me.btnSettings.TabIndex = 9
         Me.btnSettings.UseVisualStyleBackColor = True
+        '
+        'cbxDefaultProfile
+        '
+        Me.cbxDefaultProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxDefaultProfile.FormattingEnabled = True
+        Me.cbxDefaultProfile.Location = New System.Drawing.Point(18, 258)
+        Me.cbxDefaultProfile.Name = "cbxDefaultProfile"
+        Me.cbxDefaultProfile.Size = New System.Drawing.Size(121, 21)
+        Me.cbxDefaultProfile.TabIndex = 10
+        '
+        'btnAbout
+        '
+        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAbout.Location = New System.Drawing.Point(439, 209)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(45, 35)
+        Me.btnAbout.TabIndex = 8
+        Me.btnAbout.Text = "?"
+        Me.btnAbout.UseVisualStyleBackColor = True
+        '
+        'btnSaveProfile
+        '
+        Me.btnSaveProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSaveProfile.Location = New System.Drawing.Point(386, 17)
+        Me.btnSaveProfile.Name = "btnSaveProfile"
+        Me.btnSaveProfile.Size = New System.Drawing.Size(97, 23)
+        Me.btnSaveProfile.TabIndex = 11
+        Me.btnSaveProfile.Text = "Save profile"
+        Me.btnSaveProfile.UseVisualStyleBackColor = True
+        '
+        'btnLoadProfile
+        '
+        Me.btnLoadProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLoadProfile.Location = New System.Drawing.Point(282, 17)
+        Me.btnLoadProfile.Name = "btnLoadProfile"
+        Me.btnLoadProfile.Size = New System.Drawing.Size(98, 23)
+        Me.btnLoadProfile.TabIndex = 12
+        Me.btnLoadProfile.Text = "Load profile"
+        Me.btnLoadProfile.UseVisualStyleBackColor = True
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(496, 229)
+        Me.ClientSize = New System.Drawing.Size(496, 256)
+        Me.Controls.Add(Me.btnLoadProfile)
+        Me.Controls.Add(Me.btnSaveProfile)
+        Me.Controls.Add(Me.cbxDefaultProfile)
         Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.btnAbout)
         Me.Controls.Add(Me.btnSync)
@@ -173,6 +216,9 @@ Partial Class frmMain
     Friend WithEvents btnSync As Button
     Friend WithEvents fbdSourceFolder As FolderBrowserDialog
     Friend WithEvents fbdTargetFolder As FolderBrowserDialog
-    Friend WithEvents btnAbout As Button
     Friend WithEvents btnSettings As Button
+    Friend WithEvents cbxDefaultProfile As ComboBox
+    Friend WithEvents btnAbout As Button
+    Friend WithEvents btnSaveProfile As Button
+    Friend WithEvents btnLoadProfile As Button
 End Class
