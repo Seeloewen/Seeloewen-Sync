@@ -23,25 +23,16 @@ Partial Class frmSettings
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.lblHeader = New System.Windows.Forms.Label()
-        Me.lblDefaultSourceFolder = New System.Windows.Forms.Label()
-        Me.tbDefaultSourceFolder = New System.Windows.Forms.TextBox()
-        Me.btnBrowseDefaultSourceFolder = New System.Windows.Forms.Button()
-        Me.btnBrowseDefaultTargetFolder = New System.Windows.Forms.Button()
-        Me.tbDefaultTargetfolder = New System.Windows.Forms.TextBox()
-        Me.lblDefaultTargetFolder = New System.Windows.Forms.Label()
-        Me.llblNotice = New System.Windows.Forms.LinkLabel()
+        Me.gbProfiles = New System.Windows.Forms.GroupBox()
+        Me.cbxDefaultProfile = New System.Windows.Forms.ComboBox()
+        Me.cbLoadProfileByDefault = New System.Windows.Forms.CheckBox()
+        Me.btnOpenProfileEditor = New System.Windows.Forms.Button()
+        Me.lblProfiles = New System.Windows.Forms.Label()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.gbProfiles.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(223, 195)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(115, 23)
-        Me.btnSave.TabIndex = 0
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
         '
         'lblHeader
         '
@@ -53,84 +44,88 @@ Partial Class frmSettings
         Me.lblHeader.TabIndex = 1
         Me.lblHeader.Text = "Settings"
         '
-        'lblDefaultSourceFolder
+        'gbProfiles
         '
-        Me.lblDefaultSourceFolder.AutoSize = True
-        Me.lblDefaultSourceFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDefaultSourceFolder.Location = New System.Drawing.Point(15, 46)
-        Me.lblDefaultSourceFolder.Name = "lblDefaultSourceFolder"
-        Me.lblDefaultSourceFolder.Size = New System.Drawing.Size(140, 16)
-        Me.lblDefaultSourceFolder.TabIndex = 2
-        Me.lblDefaultSourceFolder.Text = "Default Source Folder:"
+        Me.gbProfiles.Controls.Add(Me.cbxDefaultProfile)
+        Me.gbProfiles.Controls.Add(Me.cbLoadProfileByDefault)
+        Me.gbProfiles.Controls.Add(Me.btnOpenProfileEditor)
+        Me.gbProfiles.Controls.Add(Me.lblProfiles)
+        Me.gbProfiles.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbProfiles.Location = New System.Drawing.Point(18, 40)
+        Me.gbProfiles.Name = "gbProfiles"
+        Me.gbProfiles.Size = New System.Drawing.Size(320, 181)
+        Me.gbProfiles.TabIndex = 2
+        Me.gbProfiles.TabStop = False
+        Me.gbProfiles.Text = "Profiles"
         '
-        'tbDefaultSourceFolder
+        'cbxDefaultProfile
         '
-        Me.tbDefaultSourceFolder.Location = New System.Drawing.Point(19, 63)
-        Me.tbDefaultSourceFolder.Name = "tbDefaultSourceFolder"
-        Me.tbDefaultSourceFolder.Size = New System.Drawing.Size(238, 20)
-        Me.tbDefaultSourceFolder.TabIndex = 3
+        Me.cbxDefaultProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxDefaultProfile.FormattingEnabled = True
+        Me.cbxDefaultProfile.Location = New System.Drawing.Point(19, 137)
+        Me.cbxDefaultProfile.Name = "cbxDefaultProfile"
+        Me.cbxDefaultProfile.Size = New System.Drawing.Size(276, 24)
+        Me.cbxDefaultProfile.TabIndex = 12
         '
-        'btnBrowseDefaultSourceFolder
+        'cbLoadProfileByDefault
         '
-        Me.btnBrowseDefaultSourceFolder.Location = New System.Drawing.Point(263, 63)
-        Me.btnBrowseDefaultSourceFolder.Name = "btnBrowseDefaultSourceFolder"
-        Me.btnBrowseDefaultSourceFolder.Size = New System.Drawing.Size(75, 23)
-        Me.btnBrowseDefaultSourceFolder.TabIndex = 4
-        Me.btnBrowseDefaultSourceFolder.Text = "Browse"
-        Me.btnBrowseDefaultSourceFolder.UseVisualStyleBackColor = True
+        Me.cbLoadProfileByDefault.AutoSize = True
+        Me.cbLoadProfileByDefault.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLoadProfileByDefault.Location = New System.Drawing.Point(19, 111)
+        Me.cbLoadProfileByDefault.Name = "cbLoadProfileByDefault"
+        Me.cbLoadProfileByDefault.Size = New System.Drawing.Size(161, 20)
+        Me.cbLoadProfileByDefault.TabIndex = 11
+        Me.cbLoadProfileByDefault.Text = "Load profile by default:"
+        Me.cbLoadProfileByDefault.UseVisualStyleBackColor = True
         '
-        'btnBrowseDefaultTargetFolder
+        'btnOpenProfileEditor
         '
-        Me.btnBrowseDefaultTargetFolder.Location = New System.Drawing.Point(263, 114)
-        Me.btnBrowseDefaultTargetFolder.Name = "btnBrowseDefaultTargetFolder"
-        Me.btnBrowseDefaultTargetFolder.Size = New System.Drawing.Size(75, 23)
-        Me.btnBrowseDefaultTargetFolder.TabIndex = 5
-        Me.btnBrowseDefaultTargetFolder.Text = "Browse"
-        Me.btnBrowseDefaultTargetFolder.UseVisualStyleBackColor = True
+        Me.btnOpenProfileEditor.Location = New System.Drawing.Point(19, 71)
+        Me.btnOpenProfileEditor.Name = "btnOpenProfileEditor"
+        Me.btnOpenProfileEditor.Size = New System.Drawing.Size(276, 23)
+        Me.btnOpenProfileEditor.TabIndex = 9
+        Me.btnOpenProfileEditor.Text = "Open Profile Editor"
+        Me.btnOpenProfileEditor.UseVisualStyleBackColor = True
         '
-        'tbDefaultTargetfolder
+        'lblProfiles
         '
-        Me.tbDefaultTargetfolder.Location = New System.Drawing.Point(19, 114)
-        Me.tbDefaultTargetfolder.Name = "tbDefaultTargetfolder"
-        Me.tbDefaultTargetfolder.Size = New System.Drawing.Size(238, 20)
-        Me.tbDefaultTargetfolder.TabIndex = 7
+        Me.lblProfiles.AutoSize = True
+        Me.lblProfiles.Location = New System.Drawing.Point(16, 27)
+        Me.lblProfiles.Name = "lblProfiles"
+        Me.lblProfiles.Size = New System.Drawing.Size(279, 32)
+        Me.lblProfiles.TabIndex = 0
+        Me.lblProfiles.Text = "Profiles allow you to save multiple schemes of" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "source and target folders."
         '
-        'lblDefaultTargetFolder
+        'btnSave
         '
-        Me.lblDefaultTargetFolder.AutoSize = True
-        Me.lblDefaultTargetFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDefaultTargetFolder.Location = New System.Drawing.Point(16, 95)
-        Me.lblDefaultTargetFolder.Name = "lblDefaultTargetFolder"
-        Me.lblDefaultTargetFolder.Size = New System.Drawing.Size(132, 16)
-        Me.lblDefaultTargetFolder.TabIndex = 6
-        Me.lblDefaultTargetFolder.Text = "Default Target folder:"
+        Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(184, 230)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(154, 23)
+        Me.btnSave.TabIndex = 3
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
-        'llblNotice
+        'btnClose
         '
-        Me.llblNotice.AutoSize = True
-        Me.llblNotice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.llblNotice.Location = New System.Drawing.Point(71, 161)
-        Me.llblNotice.Name = "llblNotice"
-        Me.llblNotice.Size = New System.Drawing.Size(200, 16)
-        Me.llblNotice.TabIndex = 8
-        Me.llblNotice.TabStop = True
-        Me.llblNotice.Text = "Notice about future development"
+        Me.btnClose.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClose.Location = New System.Drawing.Point(18, 230)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(149, 23)
+        Me.btnClose.TabIndex = 4
+        Me.btnClose.Text = "Cancel"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(350, 229)
-        Me.Controls.Add(Me.llblNotice)
-        Me.Controls.Add(Me.tbDefaultTargetfolder)
-        Me.Controls.Add(Me.lblDefaultTargetFolder)
-        Me.Controls.Add(Me.btnBrowseDefaultTargetFolder)
-        Me.Controls.Add(Me.btnBrowseDefaultSourceFolder)
-        Me.Controls.Add(Me.tbDefaultSourceFolder)
-        Me.Controls.Add(Me.lblDefaultSourceFolder)
-        Me.Controls.Add(Me.lblHeader)
+        Me.ClientSize = New System.Drawing.Size(350, 265)
+        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.gbProfiles)
+        Me.Controls.Add(Me.lblHeader)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -138,18 +133,18 @@ Partial Class frmSettings
         Me.Name = "frmSettings"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Settings"
+        Me.gbProfiles.ResumeLayout(False)
+        Me.gbProfiles.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnSave As Button
     Friend WithEvents lblHeader As Label
-    Friend WithEvents lblDefaultSourceFolder As Label
-    Friend WithEvents tbDefaultSourceFolder As TextBox
-    Friend WithEvents btnBrowseDefaultSourceFolder As Button
-    Friend WithEvents btnBrowseDefaultTargetFolder As Button
-    Friend WithEvents tbDefaultTargetfolder As TextBox
-    Friend WithEvents lblDefaultTargetFolder As Label
-    Friend WithEvents llblNotice As LinkLabel
+    Friend WithEvents gbProfiles As GroupBox
+    Friend WithEvents btnSave As Button
+    Friend WithEvents btnClose As Button
+    Friend WithEvents cbxDefaultProfile As ComboBox
+    Friend WithEvents cbLoadProfileByDefault As CheckBox
+    Friend WithEvents btnOpenProfileEditor As Button
+    Friend WithEvents lblProfiles As Label
 End Class
