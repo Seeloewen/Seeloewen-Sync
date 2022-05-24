@@ -45,9 +45,9 @@ Partial Class frmAbout
         Me.lblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVersion.Location = New System.Drawing.Point(13, 13)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(359, 29)
+        Me.lblVersion.Size = New System.Drawing.Size(371, 29)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "SealSync Dev Build 2201252230"
+        Me.lblVersion.Text = "SealSync 0.3-b Build 2205242230"
         '
         'lblDescription
         '
@@ -55,9 +55,9 @@ Partial Class frmAbout
         Me.lblDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescription.Location = New System.Drawing.Point(14, 42)
         Me.lblDescription.Name = "lblDescription"
-        Me.lblDescription.Size = New System.Drawing.Size(381, 20)
+        Me.lblDescription.Size = New System.Drawing.Size(383, 20)
         Me.lblDescription.TabIndex = 1
-        Me.lblDescription.Text = "Simple folder synchronization program by Seeloewen" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblDescription.Text = "Simple folder synchronization software by Seeloewen" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'llblGithub
         '
