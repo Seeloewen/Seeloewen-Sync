@@ -9,4 +9,4 @@ SealSync allows you to sync files between two folders with one simple click. Why
 - Synchronize multiple folders with one click.
 - Compare folders to see what changed
 - MAYBE at some point live synchronization
-- Save settings and have multiple synchronization schemes loadable from settings
+- Save settings and have multiple synchronization schemes loadable from settings (Released in 0.3-b)
