@@ -11,3 +11,8 @@ C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.exe
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.xml
 C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.pdb
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.vbproj.AssemblyReference.cache
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.frmLoadProfileFrom.resources
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.frmProfileEditor.resources
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.frmSaveProfileAs.resources
+C:\Users\Louis\OneDrive\Dokumente\Programmieren\Visual Studio Projekte\SealSync\SealSync\SealSync\obj\Release\SealSync.frmSettings.resources

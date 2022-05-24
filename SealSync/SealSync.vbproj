@@ -48,7 +48,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Skinbild.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -82,11 +82,29 @@
     <Compile Include="frmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLoadProfileFrom.Designer.vb">
+      <DependentUpon>frmLoadProfileFrom.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoadProfileFrom.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProfileEditor.Designer.vb">
+      <DependentUpon>frmProfileEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProfileEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaveProfileAs.Designer.vb">
+      <DependentUpon>frmSaveProfileAs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaveProfileAs.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSettings.Designer.vb">
@@ -116,8 +134,17 @@
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLoadProfileFrom.resx">
+      <DependentUpon>frmLoadProfileFrom.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProfileEditor.resx">
+      <DependentUpon>frmProfileEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaveProfileAs.resx">
+      <DependentUpon>frmSaveProfileAs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
@@ -142,6 +169,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icon.ico" />
     <Content Include="Skinbild.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
