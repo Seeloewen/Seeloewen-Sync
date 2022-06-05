@@ -45,9 +45,9 @@ Partial Class frmAbout
         Me.lblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVersion.Location = New System.Drawing.Point(13, 13)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(371, 29)
+        Me.lblVersion.Size = New System.Drawing.Size(390, 29)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "SealSync 0.3-b Build 2205242230"
+        Me.lblVersion.Text = "SealSync 0.3.1-b Build 2205061240"
         '
         'lblDescription
         '
