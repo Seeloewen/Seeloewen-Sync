@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SealSync"
+    "\\SealSync",
+    "\\SealSync\\My Project"
   ],
-  "SelectedNode": "\\SealSync\\frmMain.vb",
+  "SelectedNode": "\\SealSync\\SealSync.sln",
   "PreviewInSolutionExplorer": false
 }
