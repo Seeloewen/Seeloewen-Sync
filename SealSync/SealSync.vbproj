@@ -170,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\btnSyncDown.png" />
+    <None Include="Resources\btnSyncUp.png" />
     <Content Include="Skinbild.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

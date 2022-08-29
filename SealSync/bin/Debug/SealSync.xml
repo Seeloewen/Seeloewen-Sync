@@ -27,5 +27,15 @@ SealSync
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:SealSync.My.Resources.Resources.btnSyncDown">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:SealSync.My.Resources.Resources.btnSyncUp">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
+</member>
 </members>
 </doc>
