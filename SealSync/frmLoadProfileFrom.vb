@@ -4,6 +4,7 @@ Public Class frmLoadProfileFrom
 
     Dim ProfileDirectory As String = frmMain.AppData + "\SealSync\Profiles"
     Dim ProfileList As String()
+    Dim ProfileContent As String()
     Dim LoadFromProfile As String
     Dim SourceFolder As String
     Dim TargetFolder As String
@@ -44,24 +45,69 @@ Public Class frmLoadProfileFrom
     End Sub
 
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
-        LoadProfile(cbxProfiles.SelectedItem, True)
+        InitializeLoadingProfile(cbxProfiles.SelectedItem, True)
     End Sub
 
-    Public Sub LoadProfile(Profile, ShowMessage)
+    Public Sub InitializeLoadingProfile(Profile As String, ShowMessage As Boolean)
         If String.IsNullOrEmpty(Profile) = False Then
             LoadFromProfile = frmMain.AppData + "\SealSync\Profiles\" + Profile + ".txt"
-            settings.Text = My.Computer.FileSystem.ReadAllText(LoadFromProfile)
-
-            frmMain.tbSourceFolder.Text = settings.Lines(0)
-            frmMain.tbTargetFolder.Text = settings.Lines(1)
-
-            If ShowMessage Then
-                MsgBox("Loaded profile " + Profile + ".", MsgBoxStyle.Information, "Loaded profile")
-            End If
-
+            ProfileContent = File.ReadAllLines(LoadFromProfile)
+            'Set new size of array
+            ReDim Preserve ProfileContent(3)
+            CheckAndConvertProfile(Profile, ShowMessage)
             Close()
         Else
             MsgBox("Error: No profile selected. Please select a profile to load from.", MsgBoxStyle.Critical, "Error")
         End If
     End Sub
+
+    Public Sub LoadProfile(Profile As String, ShowMessage As Boolean)
+        'Version 0.3.0
+        frmMain.tbFolder1.Text = ProfileContent(0)
+        frmMain.tbFolder2.Text = ProfileContent(1)
+        'Version 0.4.0
+        frmMain.SyncDirection = ProfileContent(2)
+        If frmMain.SyncDirection = "Down" Then
+            frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+        ElseIf frmMain.SyncDirection = "Up" Then
+            frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+        End If
+
+        If ShowMessage Then
+            MsgBox("Loaded profile " + Profile + ".", MsgBoxStyle.Information, "Loaded profile")
+        End If
+    End Sub
+
+    Public Sub CheckAndConvertProfile(Profile As String, ShowMessage As Boolean)
+        If (String.IsNullOrEmpty(ProfileContent(0)) OrElse String.IsNullOrEmpty(ProfileContent(1)) OrElse String.IsNullOrEmpty(ProfileContent(2))) Then
+            Select Case MsgBox("You are trying to load a profile from an older version or a corrupted profile. You need to update it in order to load it. You usually won't lose any settings. Do you want to continue?", MsgBoxStyle.YesNo, "Load old or corrupted profile")
+                Case Windows.Forms.DialogResult.Yes
+                    If String.IsNullOrEmpty(ProfileContent(0)) Then
+                        ProfileContent(0) = "None"
+                    End If
+                    If String.IsNullOrEmpty(ProfileContent(1)) Then
+                        ProfileContent(1) = "None"
+                    End If
+                    If String.IsNullOrEmpty(ProfileContent(2)) Then
+                        ProfileContent(2) = "Down"
+                        frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+                    End If
+                    LoadProfile(Profile, False)
+                    frmSaveProfileAs.UpdateProfile(Profile)
+                    MsgBox("Loaded and updated profile. It should now work correctly!", MsgBoxStyle.Information, "Loaded and updated profile")
+                Case Windows.Forms.DialogResult.No
+                    MsgBox("Cancelled loading profile.", MsgBoxStyle.Exclamation, "Warning")
+            End Select
+        Else
+            LoadProfile(Profile, ShowMessage)
+        End If
+    End Sub
+    Public Function ReturnArrayAsString(SourceArray As String())
+        Dim FullString As String = ""
+        For Each line As String In SourceArray
+            FullString = FullString + line + vbNewLine
+        Next
+        FullString = FullString.Remove(FullString.Length - 2)
+        Return FullString
+    End Function
 End Class

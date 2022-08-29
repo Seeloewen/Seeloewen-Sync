@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmLoadProfileFrom
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,14 +20,13 @@ Partial Class frmLoadProfileFrom
     'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
     'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLoadProfileFrom))
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnLoad = New System.Windows.Forms.Button()
         Me.cbxProfiles = New System.Windows.Forms.ComboBox()
         Me.lblLoadProfileFrom = New System.Windows.Forms.Label()
-        Me.settings = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'btnCancel
@@ -67,21 +66,12 @@ Partial Class frmLoadProfileFrom
         Me.lblLoadProfileFrom.TabIndex = 5
         Me.lblLoadProfileFrom.Text = "Load profile from..."
         '
-        'settings
-        '
-        Me.settings.Location = New System.Drawing.Point(12, 156)
-        Me.settings.Name = "settings"
-        Me.settings.Size = New System.Drawing.Size(100, 96)
-        Me.settings.TabIndex = 10
-        Me.settings.Text = ""
-        '
         'frmLoadProfileFrom
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(374, 102)
-        Me.Controls.Add(Me.settings)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.cbxProfiles)
@@ -102,5 +92,4 @@ Partial Class frmLoadProfileFrom
     Friend WithEvents btnLoad As Button
     Friend WithEvents cbxProfiles As ComboBox
     Friend WithEvents lblLoadProfileFrom As Label
-    Friend WithEvents settings As RichTextBox
 End Class

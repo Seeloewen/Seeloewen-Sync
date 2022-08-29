@@ -6,39 +6,42 @@ Public Class frmMain
     Public AppData As String = GetFolderPath(SpecialFolder.ApplicationData)
     Dim ProfileDirectory As String = AppData + "\SealSync\Profiles"
     Dim ProfileList As String()
+    Public SyncDirection As String = "Down"
 
-    Private Sub btnBrowseSourceFolder_Click(sender As Object, e As EventArgs) Handles btnBrowseSourceFolder.Click
-        fbdSourceFolder.ShowDialog()
-        Dim SourceFolder As String = fbdSourceFolder.SelectedPath
-        tbSourceFolder.Text = SourceFolder
+    Private Sub btnBrowseFolder1_Click(sender As Object, e As EventArgs) Handles btnBrowseFolder1.Click
+        fbdFolder1.ShowDialog()
+        tbFolder1.Text = fbdFolder1.SelectedPath
     End Sub
 
-    Private Sub btnBrowseTargetFolder_Click(sender As Object, e As EventArgs) Handles btnBrowseTargetFolder.Click
-        fbdTargetFolder.ShowDialog()
-        Dim TargetFolder As String = fbdTargetFolder.SelectedPath
-        tbTargetFolder.Text = TargetFolder
+    Private Sub btnBrowseFolder2_Click(sender As Object, e As EventArgs) Handles btnBrowseFolder2.Click
+        fbdFolder2.ShowDialog()
+        tbFolder2.Text = fbdFolder2.SelectedPath
     End Sub
 
     Private Sub btnSync_Click(sender As Object, e As EventArgs) Handles btnSync.Click
-        If String.IsNullOrEmpty(tbSourceFolder.Text & tbTargetFolder.Text) Then
-            MsgBox("Error: Source and target folder cannot be empty.", MsgBoxStyle.Critical, "Error")
-        ElseIf String.IsNullOrEmpty(tbTargetFolder.Text) Then
-            MsgBox("Error: Target folder cannot be empty.", MsgBoxStyle.Critical, "Error")
-        ElseIf String.IsNullOrEmpty(tbSourceFolder.Text) Then
-            MsgBox("Error: Source folder cannot be empty.", MsgBoxStyle.Critical, "Error")
+        If String.IsNullOrEmpty(tbFolder1.Text & tbFolder2.Text) Then
+            MsgBox("Error: Folder 1 and Folder 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbFolder2.Text) Then
+            MsgBox("Error: Folder 1 cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbFolder1.Text) Then
+            MsgBox("Error: Folder 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
         Else
             Try
-                Sync()
+                If SyncDirection = "Down" Then
+                    Sync(tbFolder1.Text, tbFolder2.Text)
+                ElseIf SyncDirection = "Up" Then
+                    Sync(tbFolder2.Text, tbFolder1.Text)
+                End If
             Catch execptionSync As Exception
                 MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
             End Try
         End If
     End Sub
 
-    Private Sub Sync()
-        System.IO.Directory.Delete(tbTargetFolder.Text, True)
-        My.Computer.FileSystem.CreateDirectory(tbTargetFolder.Text)
-        My.Computer.FileSystem.CopyDirectory(tbSourceFolder.Text, tbTargetFolder.Text)
+    Private Sub Sync(SourceFolder As String, TargetFolder As String)
+        System.IO.Directory.Delete(TargetFolder, True)
+        My.Computer.FileSystem.CreateDirectory(TargetFolder)
+        My.Computer.FileSystem.CopyDirectory(SourceFolder, TargetFolder)
         MsgBox("Sync completed successfully!", MsgBoxStyle.Information, "Success")
     End Sub
 
@@ -62,7 +65,7 @@ Public Class frmMain
             If String.IsNullOrEmpty(My.Settings.DefaultProfile) = False Then
                 If My.Computer.FileSystem.FileExists(AppData + "\SealSync\Profiles\" + My.Settings.DefaultProfile + ".txt") Then
                     cbxDefaultProfile.SelectedItem = My.Settings.DefaultProfile
-                    frmLoadProfileFrom.LoadProfile(cbxDefaultProfile.SelectedItem, False)
+                    frmLoadProfileFrom.InitializeLoadingProfile(cbxDefaultProfile.SelectedItem, False)
                 Else
                     MsgBox("Error: Default profile no longer exists. Option will be disabled automatically.", MsgBoxStyle.Critical, "Error")
                     frmSettings.cbLoadProfileByDefault.Checked = False
@@ -105,5 +108,15 @@ Public Class frmMain
 
     Private Sub btnSaveProfile_Click(sender As Object, e As EventArgs) Handles btnSaveProfile.Click
         frmSaveProfileAs.ShowDialog()
+    End Sub
+
+    Private Sub btnChangeSyncDirection_Click(sender As Object, e As EventArgs) Handles btnChangeSyncDirection.Click
+        If SyncDirection = "Down" Then
+            SyncDirection = "Up"
+            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+        ElseIf SyncDirection = "Up" Then
+            SyncDirection = "Down"
+            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+        End If
     End Sub
 End Class

@@ -29,21 +29,22 @@ Partial Class frmProfileEditor
         Me.btnSave = New System.Windows.Forms.Button()
         Me.cbxProfile = New System.Windows.Forms.ComboBox()
         Me.gbEditProfile = New System.Windows.Forms.GroupBox()
-        Me.btnBrowseSourceFolder = New System.Windows.Forms.Button()
-        Me.btnBrowseTargetFolder = New System.Windows.Forms.Button()
-        Me.tbTargetFolder = New System.Windows.Forms.TextBox()
-        Me.tbSourceFolder = New System.Windows.Forms.TextBox()
-        Me.lblTargetFolder = New System.Windows.Forms.Label()
-        Me.lblSourceFolder = New System.Windows.Forms.Label()
-        Me.fbdSourceFolder = New System.Windows.Forms.FolderBrowserDialog()
-        Me.fbdTargetFolder = New System.Windows.Forms.FolderBrowserDialog()
+        Me.btnChangeSyncDirection = New System.Windows.Forms.Button()
+        Me.btnFolder1 = New System.Windows.Forms.Button()
+        Me.btnFolder2 = New System.Windows.Forms.Button()
+        Me.tbFolder2 = New System.Windows.Forms.TextBox()
+        Me.tbFolder1 = New System.Windows.Forms.TextBox()
+        Me.lblFolder2 = New System.Windows.Forms.Label()
+        Me.lblFolder1 = New System.Windows.Forms.Label()
+        Me.fbdFolder1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.fbdFolder2 = New System.Windows.Forms.FolderBrowserDialog()
         Me.settings = New System.Windows.Forms.RichTextBox()
         Me.gbEditProfile.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(325, 206)
+        Me.btnClose.Location = New System.Drawing.Point(325, 244)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(139, 23)
         Me.btnClose.TabIndex = 17
@@ -62,7 +63,7 @@ Partial Class frmProfileEditor
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(164, 206)
+        Me.btnDelete.Location = New System.Drawing.Point(164, 244)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(155, 23)
         Me.btnDelete.TabIndex = 15
@@ -71,7 +72,7 @@ Partial Class frmProfileEditor
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(11, 206)
+        Me.btnSave.Location = New System.Drawing.Point(11, 244)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(147, 23)
         Me.btnSave.TabIndex = 14
@@ -89,84 +90,95 @@ Partial Class frmProfileEditor
         '
         'gbEditProfile
         '
-        Me.gbEditProfile.Controls.Add(Me.btnBrowseSourceFolder)
-        Me.gbEditProfile.Controls.Add(Me.btnBrowseTargetFolder)
-        Me.gbEditProfile.Controls.Add(Me.tbTargetFolder)
-        Me.gbEditProfile.Controls.Add(Me.tbSourceFolder)
-        Me.gbEditProfile.Controls.Add(Me.lblTargetFolder)
-        Me.gbEditProfile.Controls.Add(Me.lblSourceFolder)
+        Me.gbEditProfile.Controls.Add(Me.btnChangeSyncDirection)
+        Me.gbEditProfile.Controls.Add(Me.btnFolder1)
+        Me.gbEditProfile.Controls.Add(Me.btnFolder2)
+        Me.gbEditProfile.Controls.Add(Me.tbFolder2)
+        Me.gbEditProfile.Controls.Add(Me.tbFolder1)
+        Me.gbEditProfile.Controls.Add(Me.lblFolder2)
+        Me.gbEditProfile.Controls.Add(Me.lblFolder1)
         Me.gbEditProfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbEditProfile.Location = New System.Drawing.Point(11, 55)
         Me.gbEditProfile.Name = "gbEditProfile"
-        Me.gbEditProfile.Size = New System.Drawing.Size(453, 145)
+        Me.gbEditProfile.Size = New System.Drawing.Size(453, 181)
         Me.gbEditProfile.TabIndex = 12
         Me.gbEditProfile.TabStop = False
         Me.gbEditProfile.Text = "Edit profile"
         '
-        'btnBrowseSourceFolder
+        'btnChangeSyncDirection
         '
-        Me.btnBrowseSourceFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBrowseSourceFolder.Location = New System.Drawing.Point(343, 46)
-        Me.btnBrowseSourceFolder.Name = "btnBrowseSourceFolder"
-        Me.btnBrowseSourceFolder.Size = New System.Drawing.Size(97, 23)
-        Me.btnBrowseSourceFolder.TabIndex = 19
-        Me.btnBrowseSourceFolder.Text = "Browse"
-        Me.btnBrowseSourceFolder.UseVisualStyleBackColor = True
+        Me.btnChangeSyncDirection.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnChangeSyncDirection.Location = New System.Drawing.Point(198, 82)
+        Me.btnChangeSyncDirection.Name = "btnChangeSyncDirection"
+        Me.btnChangeSyncDirection.Size = New System.Drawing.Size(53, 42)
+        Me.btnChangeSyncDirection.TabIndex = 19
+        Me.btnChangeSyncDirection.UseVisualStyleBackColor = True
         '
-        'btnBrowseTargetFolder
+        'btnFolder1
         '
-        Me.btnBrowseTargetFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBrowseTargetFolder.Location = New System.Drawing.Point(343, 104)
-        Me.btnBrowseTargetFolder.Name = "btnBrowseTargetFolder"
-        Me.btnBrowseTargetFolder.Size = New System.Drawing.Size(97, 23)
-        Me.btnBrowseTargetFolder.TabIndex = 18
-        Me.btnBrowseTargetFolder.Text = "Browse"
-        Me.btnBrowseTargetFolder.UseVisualStyleBackColor = True
+        Me.btnFolder1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFolder1.Location = New System.Drawing.Point(343, 46)
+        Me.btnFolder1.Name = "btnFolder1"
+        Me.btnFolder1.Size = New System.Drawing.Size(97, 23)
+        Me.btnFolder1.TabIndex = 19
+        Me.btnFolder1.Text = "Browse"
+        Me.btnFolder1.UseVisualStyleBackColor = True
         '
-        'tbTargetFolder
+        'btnFolder2
         '
-        Me.tbTargetFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTargetFolder.Location = New System.Drawing.Point(19, 104)
-        Me.tbTargetFolder.Name = "tbTargetFolder"
-        Me.tbTargetFolder.Size = New System.Drawing.Size(312, 22)
-        Me.tbTargetFolder.TabIndex = 8
+        Me.btnFolder2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFolder2.Location = New System.Drawing.Point(343, 145)
+        Me.btnFolder2.Name = "btnFolder2"
+        Me.btnFolder2.Size = New System.Drawing.Size(97, 23)
+        Me.btnFolder2.TabIndex = 18
+        Me.btnFolder2.Text = "Browse"
+        Me.btnFolder2.UseVisualStyleBackColor = True
         '
-        'tbSourceFolder
+        'tbFolder2
         '
-        Me.tbSourceFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSourceFolder.Location = New System.Drawing.Point(19, 46)
-        Me.tbSourceFolder.Name = "tbSourceFolder"
-        Me.tbSourceFolder.Size = New System.Drawing.Size(312, 22)
-        Me.tbSourceFolder.TabIndex = 7
+        Me.tbFolder2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbFolder2.Location = New System.Drawing.Point(19, 145)
+        Me.tbFolder2.Name = "tbFolder2"
+        Me.tbFolder2.Size = New System.Drawing.Size(312, 22)
+        Me.tbFolder2.TabIndex = 8
         '
-        'lblTargetFolder
+        'tbFolder1
         '
-        Me.lblTargetFolder.AutoSize = True
-        Me.lblTargetFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTargetFolder.Location = New System.Drawing.Point(16, 85)
-        Me.lblTargetFolder.Name = "lblTargetFolder"
-        Me.lblTargetFolder.Size = New System.Drawing.Size(87, 16)
-        Me.lblTargetFolder.TabIndex = 6
-        Me.lblTargetFolder.Text = "Target folder:"
+        Me.tbFolder1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbFolder1.Location = New System.Drawing.Point(19, 46)
+        Me.tbFolder1.Name = "tbFolder1"
+        Me.tbFolder1.Size = New System.Drawing.Size(312, 22)
+        Me.tbFolder1.TabIndex = 7
         '
-        'lblSourceFolder
+        'lblFolder2
         '
-        Me.lblSourceFolder.AutoSize = True
-        Me.lblSourceFolder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSourceFolder.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblSourceFolder.Location = New System.Drawing.Point(16, 27)
-        Me.lblSourceFolder.Name = "lblSourceFolder"
-        Me.lblSourceFolder.Size = New System.Drawing.Size(90, 16)
-        Me.lblSourceFolder.TabIndex = 5
-        Me.lblSourceFolder.Text = "Source folder:"
+        Me.lblFolder2.AutoSize = True
+        Me.lblFolder2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFolder2.Location = New System.Drawing.Point(16, 126)
+        Me.lblFolder2.Name = "lblFolder2"
+        Me.lblFolder2.Size = New System.Drawing.Size(59, 16)
+        Me.lblFolder2.TabIndex = 6
+        Me.lblFolder2.Text = "Folder 2:"
         '
-        'fbdSourceFolder
+        'lblFolder1
         '
-        Me.fbdSourceFolder.Description = "Select the source folder for the profile you're editing."
+        Me.lblFolder1.AutoSize = True
+        Me.lblFolder1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFolder1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblFolder1.Location = New System.Drawing.Point(16, 27)
+        Me.lblFolder1.Name = "lblFolder1"
+        Me.lblFolder1.Size = New System.Drawing.Size(59, 16)
+        Me.lblFolder1.TabIndex = 5
+        Me.lblFolder1.Text = "Folder 1:"
         '
-        'fbdTargetFolder
+        'fbdFolder1
         '
-        Me.fbdTargetFolder.Description = "Select the target folder for the profile you're editing."
+        Me.fbdFolder1.Description = "Select folder 1..."
+        '
+        'fbdFolder2
+        '
+        Me.fbdFolder2.Description = "Select folder 2..."
         '
         'settings
         '
@@ -181,7 +193,7 @@ Partial Class frmProfileEditor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(476, 242)
+        Me.ClientSize = New System.Drawing.Size(476, 276)
         Me.Controls.Add(Me.settings)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Label1)
@@ -195,7 +207,7 @@ Partial Class frmProfileEditor
         Me.MinimizeBox = False
         Me.Name = "frmProfileEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "frmProfileEditor"
+        Me.Text = "Profile Editor"
         Me.gbEditProfile.ResumeLayout(False)
         Me.gbEditProfile.PerformLayout()
         Me.ResumeLayout(False)
@@ -209,13 +221,14 @@ Partial Class frmProfileEditor
     Friend WithEvents btnSave As Button
     Friend WithEvents cbxProfile As ComboBox
     Friend WithEvents gbEditProfile As GroupBox
-    Friend WithEvents tbTargetFolder As TextBox
-    Friend WithEvents tbSourceFolder As TextBox
-    Friend WithEvents lblTargetFolder As Label
-    Friend WithEvents lblSourceFolder As Label
-    Friend WithEvents btnBrowseSourceFolder As Button
-    Friend WithEvents btnBrowseTargetFolder As Button
-    Friend WithEvents fbdSourceFolder As FolderBrowserDialog
-    Friend WithEvents fbdTargetFolder As FolderBrowserDialog
+    Friend WithEvents tbFolder2 As TextBox
+    Friend WithEvents tbFolder1 As TextBox
+    Friend WithEvents lblFolder2 As Label
+    Friend WithEvents lblFolder1 As Label
+    Friend WithEvents btnFolder1 As Button
+    Friend WithEvents btnFolder2 As Button
+    Friend WithEvents fbdFolder1 As FolderBrowserDialog
+    Friend WithEvents fbdFolder2 As FolderBrowserDialog
     Friend WithEvents settings As RichTextBox
+    Friend WithEvents btnChangeSyncDirection As Button
 End Class

@@ -1,26 +1,31 @@
 ﻿Public Class frmSaveProfileAs
 
-    Dim SourceFolder As String
-    Dim TargetFolder As String
+    Dim Folder1 As String
+    Dim Folder2 As String
+    Dim SyncDirection As String
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        SaveProfile(tbSaveProfileAs.Text)
+    End Sub
 
-        SourceFolder = frmMain.tbSourceFolder.Text
-        TargetFolder = frmMain.tbTargetFolder.Text
+    Public Sub SaveProfile(ProfileName)
+        Folder1 = frmMain.tbFolder1.Text
+        Folder2 = frmMain.tbFolder2.Text
+        SyncDirection = frmMain.SyncDirection
 
-        If String.IsNullOrEmpty(tbSaveProfileAs.Text) = False Then
+        If String.IsNullOrEmpty(ProfileName) = False Then
             If My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles") Then
-                If My.Computer.FileSystem.FileExists(frmMain.AppData + "\SealSync\Profiles\" + tbSaveProfileAs.Text + ".txt") Then
+                If My.Computer.FileSystem.FileExists(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt") Then
                     Select Case MessageBox.Show("A profile with this name already exists. Do you want to override it?", "Profile already exists", MessageBoxButtons.YesNo)
                         Case Windows.Forms.DialogResult.Yes
-                            My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + tbSaveProfileAs.Text + ".txt", SourceFolder + vbNewLine + TargetFolder, False)
+                            My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
                             MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
                             Close()
                         Case Windows.Forms.DialogResult.No
                             MsgBox("Profile was not overwritten. Please select a different profile name.", MsgBoxStyle.Exclamation, "Profile not overwritten.")
                     End Select
                 Else
-                    My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + tbSaveProfileAs.Text + ".txt", SourceFolder + vbNewLine + TargetFolder, False)
+                    My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
                     MsgBox("Profile was saved.", MsgBoxStyle.Information, "Saved")
                     Close()
                 End If
@@ -29,6 +34,15 @@
             End If
         Else
             MsgBox("Error: Profile name is empty. Please enter a profile name.", MsgBoxStyle.Critical, "Error")
+        End If
+    End Sub
+
+    Public Sub UpdateProfile(ProfileName)
+        If String.IsNullOrEmpty(ProfileName) = False Then
+            My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles")
+            My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
+        Else
+            MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
         End If
     End Sub
 
