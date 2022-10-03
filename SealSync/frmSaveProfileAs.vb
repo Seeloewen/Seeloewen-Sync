@@ -39,10 +39,13 @@
 
     Public Sub UpdateProfile(ProfileName)
         If String.IsNullOrEmpty(ProfileName) = False Then
-            My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles")
-            My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
+            If My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles") Then
+                My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
+            Else
+                MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+            End If
         Else
-            MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+            MsgBox("Error: Couldn't update profile as the name is empty.", MsgBoxStyle.Critical, "Error")
         End If
     End Sub
 
