@@ -9,8 +9,17 @@
     End Sub
 
     Public Sub SaveProfile(ProfileName)
-        Folder1 = frmMain.tbFolder1.Text
-        Folder2 = frmMain.tbFolder2.Text
+        If String.IsNullOrEmpty(Folder1) Then
+            Folder1 = "None"
+        Else
+            Folder1 = frmMain.tbFolder1.Text
+        End If
+        If String.IsNullOrEmpty(Folder2) Then
+            Folder2 = "None"
+        Else
+            Folder2 = frmMain.tbFolder2.Text
+        End If
+
         SyncDirection = frmMain.SyncDirection
 
         If String.IsNullOrEmpty(ProfileName) = False Then
@@ -38,6 +47,19 @@
     End Sub
 
     Public Sub UpdateProfile(ProfileName)
+        If String.IsNullOrEmpty(Folder1) Then
+            Folder1 = "None"
+        Else
+            Folder1 = frmMain.tbFolder1.Text
+        End If
+        If String.IsNullOrEmpty(Folder2) Then
+            Folder2 = "None"
+        Else
+            Folder2 = frmMain.tbFolder2.Text
+        End If
+
+        SyncDirection = frmMain.SyncDirection
+
         If String.IsNullOrEmpty(ProfileName) = False Then
             If My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles") Then
                 My.Computer.FileSystem.WriteAllText(frmMain.AppData + "\SealSync\Profiles\" + ProfileName + ".txt", Folder1 + vbNewLine + Folder2 + vbNewLine + SyncDirection, False)
