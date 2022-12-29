@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 ' Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("SealSync")>
+<Assembly: AssemblyTitle("Seeloewen Sync")>
 <Assembly: AssemblyDescription("Simple folder synchronization program")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("SealSync")>

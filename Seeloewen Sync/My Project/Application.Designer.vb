@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.SealSync.frmMain
+            Me.MainForm = Global.Seeloewen_Sync.frmMain
         End Sub
     End Class
 End Namespace
