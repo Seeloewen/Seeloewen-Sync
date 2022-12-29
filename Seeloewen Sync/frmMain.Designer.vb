@@ -51,11 +51,11 @@ Partial Class frmMain
         '
         Me.lblHeader.AutoSize = True
         Me.lblHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHeader.Location = New System.Drawing.Point(13, 13)
+        Me.lblHeader.Location = New System.Drawing.Point(13, 19)
         Me.lblHeader.Name = "lblHeader"
-        Me.lblHeader.Size = New System.Drawing.Size(111, 25)
+        Me.lblHeader.Size = New System.Drawing.Size(186, 25)
         Me.lblHeader.TabIndex = 0
-        Me.lblHeader.Text = "SealSync"
+        Me.lblHeader.Text = "Seeloewen Sync"
         '
         'lblFolder1
         '
@@ -260,7 +260,7 @@ Partial Class frmMain
         Me.MinimizeBox = False
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SealSync"
+        Me.Text = "Seeloewen Sync"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
