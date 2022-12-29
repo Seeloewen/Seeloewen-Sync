@@ -45,9 +45,9 @@ Partial Class frmAbout
         Me.lblVersion.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVersion.Location = New System.Drawing.Point(13, 13)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(390, 29)
+        Me.lblVersion.Size = New System.Drawing.Size(273, 29)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "SealSync 0.3.1-b Build 2205061240"
+        Me.lblVersion.Text = "Seeloewen Sync 0.4.0-b"
         '
         'lblDescription
         '
@@ -63,7 +63,7 @@ Partial Class frmAbout
         '
         Me.llblGithub.AutoSize = True
         Me.llblGithub.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.llblGithub.Location = New System.Drawing.Point(18, 428)
+        Me.llblGithub.Location = New System.Drawing.Point(18, 392)
         Me.llblGithub.Name = "llblGithub"
         Me.llblGithub.Size = New System.Drawing.Size(137, 20)
         Me.llblGithub.TabIndex = 2
@@ -76,7 +76,7 @@ Partial Class frmAbout
         Me.gbLicense.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbLicense.Location = New System.Drawing.Point(6, 6)
         Me.gbLicense.Name = "gbLicense"
-        Me.gbLicense.Size = New System.Drawing.Size(403, 308)
+        Me.gbLicense.Size = New System.Drawing.Size(465, 273)
         Me.gbLicense.TabIndex = 3
         Me.gbLicense.TabStop = False
         Me.gbLicense.Text = "GNU GPL v3"
@@ -86,14 +86,14 @@ Partial Class frmAbout
         Me.rbtLicense.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.rbtLicense.Location = New System.Drawing.Point(6, 21)
         Me.rbtLicense.Name = "rbtLicense"
-        Me.rbtLicense.Size = New System.Drawing.Size(391, 281)
+        Me.rbtLicense.Size = New System.Drawing.Size(453, 248)
         Me.rbtLicense.TabIndex = 4
         Me.rbtLicense.Text = resources.GetString("rbtLicense.Text")
         '
         'btnOK
         '
         Me.btnOK.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOK.Location = New System.Drawing.Point(354, 426)
+        Me.btnOK.Location = New System.Drawing.Point(418, 389)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(85, 26)
         Me.btnOK.TabIndex = 4
@@ -107,7 +107,7 @@ Partial Class frmAbout
         Me.tcAbout.Location = New System.Drawing.Point(18, 74)
         Me.tcAbout.Name = "tcAbout"
         Me.tcAbout.SelectedIndex = 0
-        Me.tcAbout.Size = New System.Drawing.Size(421, 346)
+        Me.tcAbout.Size = New System.Drawing.Size(485, 308)
         Me.tcAbout.TabIndex = 5
         '
         'tpLicense
@@ -117,7 +117,7 @@ Partial Class frmAbout
         Me.tpLicense.Location = New System.Drawing.Point(4, 22)
         Me.tpLicense.Name = "tpLicense"
         Me.tpLicense.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpLicense.Size = New System.Drawing.Size(413, 320)
+        Me.tpLicense.Size = New System.Drawing.Size(477, 282)
         Me.tpLicense.TabIndex = 0
         Me.tpLicense.Text = "License"
         '
@@ -128,7 +128,7 @@ Partial Class frmAbout
         Me.tpChangelog.Location = New System.Drawing.Point(4, 22)
         Me.tpChangelog.Name = "tpChangelog"
         Me.tpChangelog.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpChangelog.Size = New System.Drawing.Size(413, 320)
+        Me.tpChangelog.Size = New System.Drawing.Size(477, 282)
         Me.tpChangelog.TabIndex = 1
         Me.tpChangelog.Text = "Changelog"
         '
@@ -139,7 +139,7 @@ Partial Class frmAbout
         Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RichTextBox1.Location = New System.Drawing.Point(7, 7)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(400, 307)
+        Me.RichTextBox1.Size = New System.Drawing.Size(464, 267)
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = resources.GetString("RichTextBox1.Text")
         '
@@ -148,7 +148,7 @@ Partial Class frmAbout
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(453, 463)
+        Me.ClientSize = New System.Drawing.Size(515, 425)
         Me.Controls.Add(Me.llblGithub)
         Me.Controls.Add(Me.btnOK)
         Me.Controls.Add(Me.tcAbout)

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rbtLicense.Text" xml:space="preserve">
-    <value>SealSync - Simple folder synchronization software
+    <value>Seeloewen Sync - Simple folder synchronization software
 Copyright (C) 2022 Louis
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -129,7 +129,11 @@ You should have received a copy of the GNU General Public License long with this
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Version 0.3.1-b (05.06.2022)
+    <value>Version 0.4.0-b (xx.xx.xxxx)
+* Fixed Profile Editor having wrong window title
+* Fixed overwritten profiles not being saved correctly
+
+Version 0.3.1-b (05.06.2022)
 * Fixed critical lag spike issue
 
 Version 0.3-b (24.05.2022)
