@@ -181,6 +181,8 @@
     <Content Include="Icon.ico" />
     <None Include="Resources\btnSyncDown.png" />
     <None Include="Resources\btnSyncUp.png" />
+    <None Include="Resources\btnSyncLeft.png" />
+    <None Include="Resources\btnSyncRight.png" />
     <Content Include="Skinbild.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
