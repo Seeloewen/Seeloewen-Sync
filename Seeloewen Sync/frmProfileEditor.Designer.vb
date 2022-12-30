@@ -107,7 +107,7 @@ Partial Class frmProfileEditor
         '
         'btnChangeSyncDirection
         '
-        Me.btnChangeSyncDirection.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
         Me.btnChangeSyncDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeSyncDirection.Location = New System.Drawing.Point(198, 82)
         Me.btnChangeSyncDirection.Name = "btnChangeSyncDirection"
@@ -175,10 +175,12 @@ Partial Class frmProfileEditor
         'fbdFolder1
         '
         Me.fbdFolder1.Description = "Select folder 1..."
+        Me.fbdFolder1.RootFolder = System.Environment.SpecialFolder.MyComputer
         '
         'fbdFolder2
         '
         Me.fbdFolder2.Description = "Select folder 2..."
+        Me.fbdFolder2.RootFolder = System.Environment.SpecialFolder.MyComputer
         '
         'settings
         '

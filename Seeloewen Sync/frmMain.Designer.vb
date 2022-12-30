@@ -127,10 +127,12 @@ Partial Class frmMain
         'fbdFolder1
         '
         Me.fbdFolder1.Description = "Select folder 1..."
+        Me.fbdFolder1.RootFolder = System.Environment.SpecialFolder.MyComputer
         '
         'fbdFolder2
         '
         Me.fbdFolder2.Description = "Select folder 2..."
+        Me.fbdFolder2.RootFolder = System.Environment.SpecialFolder.MyComputer
         '
         'cbxDefaultProfile
         '
@@ -173,7 +175,7 @@ Partial Class frmMain
         '
         'btnChangeSyncDirection
         '
-        Me.btnChangeSyncDirection.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
         Me.btnChangeSyncDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeSyncDirection.Location = New System.Drawing.Point(192, 70)
         Me.btnChangeSyncDirection.Name = "btnChangeSyncDirection"
@@ -183,7 +185,7 @@ Partial Class frmMain
         '
         'btnSettings
         '
-        Me.btnSettings.BackgroundImage = Global.SealSync.My.Resources.Resources.btnSettings
+        Me.btnSettings.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSettings
         Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSettings.Location = New System.Drawing.Point(432, 17)

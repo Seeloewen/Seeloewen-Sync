@@ -121,6 +121,11 @@ Public Class frmMain
     End Sub
 
     Private Sub btnCompareFolders_Click(sender As Object, e As EventArgs) Handles btnCompareFolders.Click
-        frmCompareFolders.Show()
+
+        If String.IsNullOrEmpty(tbFolder1.Text) Or String.IsNullOrEmpty(tbFolder2.Text) Then
+            MsgBox("Please specify a folder 1 and a folder 2", MsgBoxStyle.Critical, "Error")
+        Else
+            frmCompareFolders.Show()
+        End If
     End Sub
 End Class
