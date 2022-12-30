@@ -127,4 +127,10 @@
   <data name="btnSyncUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnSyncUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SyncLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSyncLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SyncRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSyncRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
