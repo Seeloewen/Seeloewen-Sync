@@ -147,9 +147,9 @@ Partial Class frmCompareFolders
         Me.lblExplanationNote.AutoSize = True
         Me.lblExplanationNote.Location = New System.Drawing.Point(492, 40)
         Me.lblExplanationNote.Name = "lblExplanationNote"
-        Me.lblExplanationNote.Size = New System.Drawing.Size(143, 80)
+        Me.lblExplanationNote.Size = New System.Drawing.Size(154, 80)
         Me.lblExplanationNote.TabIndex = 4
-        Me.lblExplanationNote.Text = "Note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Files in folder 1 will " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "always remain " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "unchanged!"
+        Me.lblExplanationNote.Text = "Note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Files in source folder" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will always remain " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "unchanged!"
         '
         'lblExplanationUnchanged
         '
