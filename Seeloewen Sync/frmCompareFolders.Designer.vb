@@ -35,13 +35,13 @@ Partial Class frmCompareFolders
         Me.lblSubHeader2 = New System.Windows.Forms.Label()
         Me.pbSyncDirection = New System.Windows.Forms.PictureBox()
         Me.gbExplanations = New System.Windows.Forms.GroupBox()
-        Me.lblHeader = New System.Windows.Forms.Label()
-        Me.lblExplanationNew = New System.Windows.Forms.Label()
-        Me.lblExplanationDeleted = New System.Windows.Forms.Label()
-        Me.lblExplanationModified = New System.Windows.Forms.Label()
-        Me.lblExplanationUnchanged = New System.Windows.Forms.Label()
-        Me.btnToggleSyncDirection = New System.Windows.Forms.Button()
         Me.lblExplanationNote = New System.Windows.Forms.Label()
+        Me.lblExplanationUnchanged = New System.Windows.Forms.Label()
+        Me.lblExplanationModified = New System.Windows.Forms.Label()
+        Me.lblExplanationDeleted = New System.Windows.Forms.Label()
+        Me.lblExplanationNew = New System.Windows.Forms.Label()
+        Me.lblHeader = New System.Windows.Forms.Label()
+        Me.btnToggleSyncDirection = New System.Windows.Forms.Button()
         CType(Me.pbSyncDirection, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbExplanations.SuspendLayout()
         Me.SuspendLayout()
@@ -142,38 +142,24 @@ Partial Class frmCompareFolders
         Me.gbExplanations.TabStop = False
         Me.gbExplanations.Text = "Color explanations - What happens to the files?"
         '
-        'lblHeader
+        'lblExplanationNote
         '
-        Me.lblHeader.AutoSize = True
-        Me.lblHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHeader.Location = New System.Drawing.Point(12, 13)
-        Me.lblHeader.Name = "lblHeader"
-        Me.lblHeader.Size = New System.Drawing.Size(173, 25)
-        Me.lblHeader.TabIndex = 14
-        Me.lblHeader.Text = "Folder Comparer"
+        Me.lblExplanationNote.AutoSize = True
+        Me.lblExplanationNote.Location = New System.Drawing.Point(492, 40)
+        Me.lblExplanationNote.Name = "lblExplanationNote"
+        Me.lblExplanationNote.Size = New System.Drawing.Size(143, 80)
+        Me.lblExplanationNote.TabIndex = 4
+        Me.lblExplanationNote.Text = "Note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Files in folder 1 will " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "always remain " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "unchanged!"
         '
-        'lblExplanationNew
+        'lblExplanationUnchanged
         '
-        Me.lblExplanationNew.AutoSize = True
-        Me.lblExplanationNew.BackColor = System.Drawing.Color.White
-        Me.lblExplanationNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExplanationNew.ForeColor = System.Drawing.Color.Green
-        Me.lblExplanationNew.Location = New System.Drawing.Point(16, 58)
-        Me.lblExplanationNew.Name = "lblExplanationNew"
-        Me.lblExplanationNew.Size = New System.Drawing.Size(203, 16)
-        Me.lblExplanationNew.TabIndex = 0
-        Me.lblExplanationNew.Text = "Green - File will be new in folder 2"
-        '
-        'lblExplanationDeleted
-        '
-        Me.lblExplanationDeleted.AutoSize = True
-        Me.lblExplanationDeleted.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExplanationDeleted.ForeColor = System.Drawing.Color.Red
-        Me.lblExplanationDeleted.Location = New System.Drawing.Point(16, 83)
-        Me.lblExplanationDeleted.Name = "lblExplanationDeleted"
-        Me.lblExplanationDeleted.Size = New System.Drawing.Size(154, 16)
-        Me.lblExplanationDeleted.TabIndex = 1
-        Me.lblExplanationDeleted.Text = "Red - File will be deleted"
+        Me.lblExplanationUnchanged.AutoSize = True
+        Me.lblExplanationUnchanged.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblExplanationUnchanged.Location = New System.Drawing.Point(16, 33)
+        Me.lblExplanationUnchanged.Name = "lblExplanationUnchanged"
+        Me.lblExplanationUnchanged.Size = New System.Drawing.Size(208, 16)
+        Me.lblExplanationUnchanged.TabIndex = 3
+        Me.lblExplanationUnchanged.Text = "Black - File will remain unchanged"
         '
         'lblExplanationModified
         '
@@ -186,15 +172,38 @@ Partial Class frmCompareFolders
         Me.lblExplanationModified.TabIndex = 2
         Me.lblExplanationModified.Text = "Blue - File will be modified"
         '
-        'lblExplanationUnchanged
+        'lblExplanationDeleted
         '
-        Me.lblExplanationUnchanged.AutoSize = True
-        Me.lblExplanationUnchanged.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExplanationUnchanged.Location = New System.Drawing.Point(16, 33)
-        Me.lblExplanationUnchanged.Name = "lblExplanationUnchanged"
-        Me.lblExplanationUnchanged.Size = New System.Drawing.Size(208, 16)
-        Me.lblExplanationUnchanged.TabIndex = 3
-        Me.lblExplanationUnchanged.Text = "Black - File will remain unchanged"
+        Me.lblExplanationDeleted.AutoSize = True
+        Me.lblExplanationDeleted.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblExplanationDeleted.ForeColor = System.Drawing.Color.Red
+        Me.lblExplanationDeleted.Location = New System.Drawing.Point(16, 83)
+        Me.lblExplanationDeleted.Name = "lblExplanationDeleted"
+        Me.lblExplanationDeleted.Size = New System.Drawing.Size(154, 16)
+        Me.lblExplanationDeleted.TabIndex = 1
+        Me.lblExplanationDeleted.Text = "Red - File will be deleted"
+        '
+        'lblExplanationNew
+        '
+        Me.lblExplanationNew.AutoSize = True
+        Me.lblExplanationNew.BackColor = System.Drawing.Color.White
+        Me.lblExplanationNew.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblExplanationNew.ForeColor = System.Drawing.Color.Green
+        Me.lblExplanationNew.Location = New System.Drawing.Point(16, 58)
+        Me.lblExplanationNew.Name = "lblExplanationNew"
+        Me.lblExplanationNew.Size = New System.Drawing.Size(230, 16)
+        Me.lblExplanationNew.TabIndex = 0
+        Me.lblExplanationNew.Text = "Green - File will be new in target folder"
+        '
+        'lblHeader
+        '
+        Me.lblHeader.AutoSize = True
+        Me.lblHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHeader.Location = New System.Drawing.Point(12, 13)
+        Me.lblHeader.Name = "lblHeader"
+        Me.lblHeader.Size = New System.Drawing.Size(173, 25)
+        Me.lblHeader.TabIndex = 14
+        Me.lblHeader.Text = "Folder Comparer"
         '
         'btnToggleSyncDirection
         '
@@ -205,15 +214,6 @@ Partial Class frmCompareFolders
         Me.btnToggleSyncDirection.TabIndex = 15
         Me.btnToggleSyncDirection.Text = "Toggle sync direction"
         Me.btnToggleSyncDirection.UseVisualStyleBackColor = True
-        '
-        'lblExplanationNote
-        '
-        Me.lblExplanationNote.AutoSize = True
-        Me.lblExplanationNote.Location = New System.Drawing.Point(492, 40)
-        Me.lblExplanationNote.Name = "lblExplanationNote"
-        Me.lblExplanationNote.Size = New System.Drawing.Size(143, 80)
-        Me.lblExplanationNote.TabIndex = 4
-        Me.lblExplanationNote.Text = "Note:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Files in folder 1 will " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "always remain " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "unchanged!"
         '
         'frmCompareFolders
         '
