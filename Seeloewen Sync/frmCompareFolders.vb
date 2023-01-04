@@ -3,8 +3,8 @@
 Public Class frmCompareFolders
 
     'Directories from main window
-    Dim directory1 As String
-    Dim directory2 As String
+    Dim directory1 As String = frmMain.tbFolder1.Text
+    Dim directory2 As String = frmMain.tbFolder2.Text
 
     'Sync direction when toggled in the current window, overwrites the main one
     Dim syncDirectionOverwrite As String
@@ -37,16 +37,8 @@ Public Class frmCompareFolders
     Private Sub SetSyncDirection(syncDirection)
         'Based on sync direction, change the controls and swap Folder 1 and 2
         If syncDirection = "Down" Then
-            directory1 = frmMain.tbFolder1.Text
-            directory2 = frmMain.tbFolder2.Text
-            lblSubHeader1.Text = "Folder 1"
-            lblSubHeader2.Text = "Folder 2"
             pbSyncDirection.BackgroundImage = My.Resources.SyncRight
         ElseIf syncDirection = "Up" Then
-            directory1 = frmMain.tbFolder2.Text
-            directory2 = frmMain.tbFolder1.Text
-            lblSubHeader1.Text = "Folder 2"
-            lblSubHeader2.Text = "Folder 1"
             pbSyncDirection.BackgroundImage = My.Resources.SyncLeft
         End If
     End Sub
