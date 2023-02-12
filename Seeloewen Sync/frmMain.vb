@@ -3,10 +3,12 @@ Imports System.IO
 
 Public Class frmMain
 
-    Public AppData As String = GetFolderPath(SpecialFolder.ApplicationData)
-    Dim ProfileDirectory As String = AppData + "\SealSync\Profiles"
-    Dim ProfileList As String()
-    Public SyncDirection As String = "Down"
+    Public appData As String = GetFolderPath(SpecialFolder.ApplicationData)
+    Dim profileDirectory As String = AppData + "\SealSync\Profiles"
+    Dim profileList As String()
+    Public folderSyncDirection As String = "Down"
+    Public fileSyncDirection As String = "Down"
+
 
     Private Sub btnBrowseFolder1_Click(sender As Object, e As EventArgs) Handles btnBrowseFolder1.Click
         fbdFolder1.ShowDialog()
@@ -18,7 +20,7 @@ Public Class frmMain
         tbFolder2.Text = fbdFolder2.SelectedPath
     End Sub
 
-    Private Sub btnSync_Click(sender As Object, e As EventArgs) Handles btnSync.Click
+    Private Sub btnSync_Click(sender As Object, e As EventArgs) Handles btnSyncFolders.Click
         If String.IsNullOrEmpty(tbFolder1.Text & tbFolder2.Text) Then
             MsgBox("Error: Folder 1 and Folder 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
         ElseIf String.IsNullOrEmpty(tbFolder2.Text) Then
@@ -27,10 +29,12 @@ Public Class frmMain
             MsgBox("Error: Folder 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
         Else
             Try
-                If SyncDirection = "Down" Then
-                    Sync(tbFolder1.Text, tbFolder2.Text)
-                ElseIf SyncDirection = "Up" Then
-                    Sync(tbFolder2.Text, tbFolder1.Text)
+                If folderSyncDirection = "Down" Then
+                    SyncFolder(tbFolder1.Text, tbFolder2.Text)
+                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
+                ElseIf folderSyncDirection = "Up" Then
+                    SyncFolder(tbFolder2.Text, tbFolder1.Text)
+                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
                 End If
             Catch execptionSync As Exception
                 MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
@@ -38,11 +42,17 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub Sync(SourceFolder As String, TargetFolder As String)
-        System.IO.Directory.Delete(TargetFolder, True)
-        My.Computer.FileSystem.CreateDirectory(TargetFolder)
-        My.Computer.FileSystem.CopyDirectory(SourceFolder, TargetFolder)
+    Private Sub SyncFolder(sourceFolder As String, targetFolder As String)
+        System.IO.Directory.Delete(targetFolder, True)
+        My.Computer.FileSystem.CreateDirectory(targetFolder)
+        My.Computer.FileSystem.CopyDirectory(sourceFolder, targetFolder)
         MsgBox("Sync completed successfully!", MsgBoxStyle.Information, "Success")
+    End Sub
+
+    Private Sub SyncFile(SourceFile As String, targetFile As String)
+        File.Delete(targetFile)
+        File.Copy(SourceFile, Path.Combine(Path.GetDirectoryName(targetFile), Path.GetFileName(SourceFile)), True)
+        MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
     End Sub
 
     Private Sub btnAbout_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
@@ -110,22 +120,75 @@ Public Class frmMain
         frmSaveProfileAs.ShowDialog()
     End Sub
 
-    Private Sub btnChangeSyncDirection_Click(sender As Object, e As EventArgs) Handles btnChangeSyncDirection.Click
-        If SyncDirection = "Down" Then
-            SyncDirection = "Up"
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
-        ElseIf SyncDirection = "Up" Then
-            SyncDirection = "Down"
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+    Private Sub btnChangeSyncDirection_Click(sender As Object, e As EventArgs) Handles btnChangeSyncDirectionFolders.Click
+        If folderSyncDirection = "Down" Then
+            folderSyncDirection = "Up"
+            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+        ElseIf folderSyncDirection = "Up" Then
+            folderSyncDirection = "Down"
+            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncDown
         End If
     End Sub
 
     Private Sub btnCompareFolders_Click(sender As Object, e As EventArgs) Handles btnCompareFolders.Click
-
         If String.IsNullOrEmpty(tbFolder1.Text) Or String.IsNullOrEmpty(tbFolder2.Text) Then
             MsgBox("Please specify a folder 1 and a folder 2", MsgBoxStyle.Critical, "Error")
         Else
-            frmCompareFolders.Show()
+            If My.Computer.FileSystem.DirectoryExists(tbFolder1.Text) = False Or My.Computer.FileSystem.DirectoryExists(tbFolder2.Text) = False Then
+                frmCompareFolders.Show()
+            End If
+        End If
+    End Sub
+
+    Private Sub btnBrowseFile1_Click(sender As Object, e As EventArgs) Handles btnBrowseFile1.Click
+        ofdFile1.ShowDialog()
+        tbFile1.Text = ofdFile1.FileName
+    End Sub
+
+    Private Sub btnBrowseFile2_Click(sender As Object, e As EventArgs) Handles btnBrowseFile2.Click
+        ofdFile2.ShowDialog()
+        tbFile2.Text = ofdFile2.FileName
+    End Sub
+
+    Private Sub btnChangeSyncDirectionFiles_Click(sender As Object, e As EventArgs) Handles btnChangeSyncDirectionFiles.Click
+        If fileSyncDirection = "Down" Then
+            fileSyncDirection = "Up"
+            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncUp
+        ElseIf fileSyncDirection = "Up" Then
+            fileSyncDirection = "Down"
+            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncDown
+        End If
+    End Sub
+
+    Private Sub btnSyncFiles_Click(sender As Object, e As EventArgs) Handles btnSyncFiles.Click
+        If String.IsNullOrEmpty(tbFile1.Text & tbFile2.Text) Then
+            MsgBox("Error: File 1 and File 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbFile2.Text) Then
+            MsgBox("Error: File 1 cannot be empty.", MsgBoxStyle.Critical, "Error")
+        ElseIf String.IsNullOrEmpty(tbFile1.Text) Then
+            MsgBox("Error: File 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
+        Else
+            Try
+                If fileSyncDirection = "Down" Then
+                    SyncFile(tbFile1.Text, tbFile2.Text)
+                ElseIf fileSyncDirection = "Up" Then
+                    SyncFile(tbFile2.Text, tbFile1.Text)
+                End If
+            Catch execptionSync As Exception
+                MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnCompareFiles_Click(sender As Object, e As EventArgs) Handles btnCompareFiles.Click
+        If String.IsNullOrEmpty(tbFile1.Text) Or String.IsNullOrEmpty(tbFile2.Text) Then
+            MsgBox("Please specify a file 1 and a file 2.", MsgBoxStyle.Critical, "Error")
+        Else
+            If My.Computer.FileSystem.FileExists(tbFile1.Text) = False Or My.Computer.FileSystem.FileExists(tbFile2.Text) = False Then
+                MsgBox("Please select a valid file path for both files.", MsgBoxStyle.Critical, "Error")
+            Else
+                frmCompareFiles.Show()
+            End If
         End If
     End Sub
 End Class

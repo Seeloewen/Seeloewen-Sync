@@ -6,8 +6,8 @@ Public Class frmLoadProfileFrom
     Dim ProfileList As String()
     Dim ProfileContent As String()
     Dim LoadFromProfile As String
-    Dim SourceFolder As String
-    Dim TargetFolder As String
+    Dim Element1 As String
+    Dim Element2 As String
 
     Private Sub frmLoadProfileFrom_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles") Then
@@ -53,7 +53,7 @@ Public Class frmLoadProfileFrom
             LoadFromProfile = frmMain.AppData + "\SealSync\Profiles\" + Profile + ".txt"
             ProfileContent = File.ReadAllLines(LoadFromProfile)
             'Set new size of array
-            ReDim Preserve ProfileContent(3)
+            ReDim Preserve ProfileContent(4)
             CheckAndConvertProfile(Profile, ShowMessage)
             Close()
         Else
@@ -62,15 +62,33 @@ Public Class frmLoadProfileFrom
     End Sub
 
     Public Sub LoadProfile(Profile As String, ShowMessage As Boolean)
-        'Version 0.3.0
-        frmMain.tbFolder1.Text = ProfileContent(0)
-        frmMain.tbFolder2.Text = ProfileContent(1)
-        'Version 0.4.0
-        frmMain.SyncDirection = ProfileContent(2)
-        If frmMain.SyncDirection = "Down" Then
-            frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
-        ElseIf frmMain.SyncDirection = "Up" Then
-            frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+        If ProfileContent(3) = "Folder" Then
+            frmMain.tbFolder1.Text = ProfileContent(0)
+            frmMain.tbFolder2.Text = ProfileContent(1)
+
+            frmMain.folderSyncDirection = ProfileContent(2)
+
+            If frmMain.folderSyncDirection = "Down" Then
+                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncDown
+            ElseIf frmMain.folderSyncDirection = "Up" Then
+                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+            End If
+
+            frmMain.tcMain.SelectedIndex = 0
+
+        ElseIf ProfileContent(3) = "File" Then
+            frmMain.tbFile1.Text = ProfileContent(0)
+            frmMain.tbFile2.Text = ProfileContent(1)
+
+            frmMain.fileSyncDirection = ProfileContent(2)
+
+            If frmMain.fileSyncDirection = "Down" Then
+                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncDown
+            ElseIf frmMain.fileSyncDirection = "Up" Then
+                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncUp
+            End If
+
+            frmMain.tcMain.SelectedIndex = 1
         End If
 
         If ShowMessage Then
@@ -79,7 +97,7 @@ Public Class frmLoadProfileFrom
     End Sub
 
     Public Sub CheckAndConvertProfile(Profile As String, ShowMessage As Boolean)
-        If (String.IsNullOrEmpty(ProfileContent(0)) OrElse String.IsNullOrEmpty(ProfileContent(1)) OrElse String.IsNullOrEmpty(ProfileContent(2))) Then
+        If (String.IsNullOrEmpty(ProfileContent(0)) OrElse String.IsNullOrEmpty(ProfileContent(1)) OrElse String.IsNullOrEmpty(ProfileContent(2)) OrElse String.IsNullOrEmpty(ProfileContent(3))) Then
             Select Case MsgBox("You are trying to load a profile from an older version or a corrupted profile. You need to update it in order to load it. You usually won't lose any settings. Do you want to continue?", MsgBoxStyle.YesNo, "Load old or corrupted profile")
                 Case Windows.Forms.DialogResult.Yes
                     If String.IsNullOrEmpty(ProfileContent(0)) Then
@@ -90,7 +108,11 @@ Public Class frmLoadProfileFrom
                     End If
                     If String.IsNullOrEmpty(ProfileContent(2)) Then
                         ProfileContent(2) = "Down"
-                        frmMain.btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+                        frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+                    End If
+                    If String.IsNullOrEmpty(ProfileContent(3)) Then
+                        ProfileContent(3) = "Folder"
+                        frmMain.tcMain.SelectedIndex = 0
                     End If
                     LoadProfile(Profile, False)
                     frmSaveProfileAs.UpdateProfile(Profile)
