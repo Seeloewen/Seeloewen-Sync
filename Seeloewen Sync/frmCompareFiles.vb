@@ -1,6 +1,9 @@
 ﻿Imports System.IO
 
 Public Class frmCompareFiles
+
+    '-- Event handlers --
+
     Private Sub frmCompareFiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Display arrow based on sync direction in main window
         If frmMain.fileSyncDirection = "Down" Then
@@ -17,6 +20,8 @@ Public Class frmCompareFiles
         rtbFileContent1.Text = File.ReadAllText(frmMain.tbFile1.Text)
         rtbFileContent2.Text = File.ReadAllText(frmMain.tbFile2.Text)
     End Sub
+
+    '-- Custom methods --
 
     Private Sub GetFileInfo1()
         'Get file name

@@ -11,8 +11,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("Seeloewen Sync")>
 <Assembly: AssemblyDescription("Simple folder synchronization program")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("SealSync")>
-<Assembly: AssemblyCopyright("Copyright © 2022 Seeloewen")>
+<Assembly: AssemblyProduct("Seeloewen Sync")>
+<Assembly: AssemblyCopyright("Copyright © 2023 Seeloewen")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' indem Sie "*" wie unten gezeigt eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("0.3.1.0")>
-<Assembly: AssemblyFileVersion("0.3.1.0")>
+<Assembly: AssemblyVersion("0.4.0.0")>
+<Assembly: AssemblyFileVersion("0.4.0.0")>

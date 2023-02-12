@@ -220,11 +220,11 @@ Partial Class frmProfileEditor
         '
         'ofdFile1
         '
-        Me.ofdFile1.FileName = "OpenFileDialog1"
+        Me.ofdFile1.Title = "Select file 1..."
         '
         'ofdFile2
         '
-        Me.ofdFile2.FileName = "OpenFileDialog2"
+        Me.ofdFile2.Title = "Select file 2..."
         '
         'frmProfileEditor
         '

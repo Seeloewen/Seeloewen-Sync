@@ -1,13 +1,13 @@
-﻿Imports System.Environment
-Imports System.IO
+﻿Imports System.IO
 
 Public Class frmSettings
 
-    Public AppData As String = GetFolderPath(SpecialFolder.ApplicationData)
-    Dim ProfileDirectory As String = AppData + "\SealSync\Profiles"
-    Dim ProfileList As String()
+    Dim profileList As String()
+
+    '-- Event handlers --
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        'Ask for confirmation before closing
         Select Case MessageBox.Show("Are you sure you want to close without saving?", "Close without saving", MessageBoxButtons.YesNo)
             Case Windows.Forms.DialogResult.Yes
                 Close()
@@ -15,29 +15,33 @@ Public Class frmSettings
     End Sub
 
     Private Sub frmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Load default settings
         If My.Settings.LoadProfileByDefault Then
             cbLoadProfileByDefault.Checked = True
         ElseIf My.Settings.LoadProfileByDefault = False Then
             cbLoadProfileByDefault.Checked = False
         End If
+
+        'Clear existing profiles, load profiles and select default profile in combobox
         cbxDefaultProfile.Items.Clear()
-        GetFiles(ProfileDirectory)
+        GetFiles(frmMain.profileDirectory)
         cbxDefaultProfile.SelectedItem = My.Settings.DefaultProfile
     End Sub
 
-    Sub GetFiles(Path As String)
-        If Path.Trim().Length = 0 Then
+    Sub GetFiles(path As String)
+        'Get all files in selected folder and put their names into combobox
+        If path.Trim().Length = 0 Then
             Return
         End If
 
-        ProfileList = Directory.GetFileSystemEntries(Path)
+        ProfileList = Directory.GetFileSystemEntries(path)
 
         Try
             For Each Profile As String In ProfileList
                 If Directory.Exists(Profile) Then
                     GetFiles(Profile)
                 Else
-                    Profile = Profile.Replace(AppData + "\SealSync\Profiles\", "")
+                    Profile = Profile.Replace(frmMain.profileDirectory, "")
                     Profile = Profile.Replace(".txt", "")
                     cbxDefaultProfile.Items.Add(Profile)
                 End If
@@ -49,17 +53,23 @@ Public Class frmSettings
     End Sub
 
     Private Sub btnOpenProfileEditor_Click(sender As Object, e As EventArgs) Handles btnOpenProfileEditor.Click
+        'Open profile editor dialog
         frmProfileEditor.ShowDialog()
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        'Save selection for whether to load default profile or not
         If cbLoadProfileByDefault.Checked Then
             My.Settings.LoadProfileByDefault = True
         ElseIf cbLoadProfileByDefault.Checked = False Then
             My.Settings.LoadProfileByDefault = False
         End If
+
+        'Save default profile
         My.Settings.DefaultProfile = cbxDefaultProfile.SelectedItem
-        Close()
+
+        'Show confirmation and close window
         MsgBox("Settings were successfully saved!", MsgBoxStyle.Information, "Saved settings")
+        Close()
     End Sub
 End Class

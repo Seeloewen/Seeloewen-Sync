@@ -2,7 +2,6 @@
 
 Public Class frmProfileEditor
 
-    Dim profileDirectory As String = frmMain.appData + "\SealSync\Profiles"
     Dim profileList As String()
     Dim profileContent As String()
     Dim loadFromProfile As String
@@ -21,8 +20,8 @@ Public Class frmProfileEditor
 
         'Write the settings to the profile file
         If String.IsNullOrEmpty(cbxProfile.SelectedItem) = False Then
-            My.Computer.FileSystem.DirectoryExists(frmMain.appData + "\SealSync\Profiles")
-            My.Computer.FileSystem.WriteAllText(frmMain.appData + "\SealSync\Profiles\" + cbxProfile.SelectedItem + ".txt", tbElement1.Text + vbNewLine + tbElement2.Text + vbNewLine + syncDirection + vbNewLine + syncType, False)
+            My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory)
+            My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + cbxProfile.SelectedItem + ".txt", tbElement1.Text + vbNewLine + tbElement2.Text + vbNewLine + syncDirection + vbNewLine + syncType, False)
             MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
         Else
             MsgBox("Error: Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
@@ -37,7 +36,7 @@ Public Class frmProfileEditor
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         'Delete profile file and remove entry in combobox
         If String.IsNullOrEmpty(cbxProfile.SelectedItem) = False Then
-            My.Computer.FileSystem.DeleteFile(frmMain.appData + "\SealSync\Profiles\" + cbxProfile.SelectedItem + ".txt")
+            My.Computer.FileSystem.DeleteFile(frmMain.profileDirectory + cbxProfile.SelectedItem + ".txt")
             MsgBox("Profile was deleted.", MsgBoxStyle.Information, "Deleted")
             cbxProfile.Items.Remove(cbxProfile.SelectedItem)
         Else
@@ -63,10 +62,11 @@ Public Class frmProfileEditor
         lblElement2.Text = "Folder 2:"
 
         'Load profiles
-        GetFiles(profileDirectory)
+        GetFiles(frmMain.profileDirectory)
     End Sub
 
     Private Sub btnBrowseElement1_Click(sender As Object, e As EventArgs) Handles btnBrowseElement1.Click
+        'Open either file browser 1 of folder browser 1
         If rbtnFile.Checked = True Then
             ofdFile1.ShowDialog()
             tbElement1.Text = ofdFile1.FileName
@@ -77,6 +77,7 @@ Public Class frmProfileEditor
     End Sub
 
     Private Sub btnBrowseElement2_Click(sender As Object, e As EventArgs) Handles btnBrowseElement2.Click
+        'Open either file browser 2 of folder browser 2
         If rbtnFile.Checked = True Then
             ofdFile2.ShowDialog()
             tbElement2.Text = ofdFile2.FileName
@@ -87,6 +88,7 @@ Public Class frmProfileEditor
     End Sub
 
     Private Sub btnChangeSyncDirection_Click(sender As Object, e As EventArgs) Handles btnChangeSyncDirection.Click
+        'Change sync direction variable and image on button
         If syncDirection = "Down" Then
             syncDirection = "Up"
             btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
@@ -102,7 +104,7 @@ Public Class frmProfileEditor
         'Checks if a profile is selected. It then reads the content of the profile file into the array. To avoid errors with the array being too small, it gets resized. The number represents the amount of settings.
         'It then starts to convert and load the profile, see the the method below.
         If String.IsNullOrEmpty(Profile) = False Then
-            loadFromProfile = frmMain.appData + "\SealSync\Profiles\" + Profile + ".txt"
+            loadFromProfile = frmMain.profileDirectory + Profile + ".txt"
             profileContent = File.ReadAllLines(loadFromProfile)
             'Set new size of array = number of settings
             ReDim Preserve profileContent(4)
@@ -174,14 +176,14 @@ Public Class frmProfileEditor
             Return
         End If
 
-        ProfileList = Directory.GetFileSystemEntries(Path)
+        profileList = Directory.GetFileSystemEntries(Path)
 
         Try
-            For Each Profile As String In ProfileList
+            For Each Profile As String In profileList
                 If Directory.Exists(Profile) Then
                     GetFiles(Profile)
                 Else
-                    Profile = Profile.Replace(frmMain.AppData + "\SealSync\Profiles\", "")
+                    Profile = Profile.Replace(frmMain.profileDirectory, "")
                     Profile = Profile.Replace(".txt", "")
                     cbxProfile.Items.Add(Profile)
                 End If

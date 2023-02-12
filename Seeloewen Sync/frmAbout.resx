@@ -119,7 +119,7 @@
   </resheader>
   <data name="rbtLicense.Text" xml:space="preserve">
     <value>Seeloewen Sync - Simple folder synchronization software
-Copyright (C) 2022 Louis
+Copyright (C) 2023 Louis
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -129,9 +129,15 @@ You should have received a copy of the GNU General Public License long with this
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Version 0.4.0-b (xx.xx.xxxx)
+    <value>Version 0.4.0-b (12.02.2023)
++ Added folder comparer
++ Added file synchronization
++ Added file comparer
+* Optimized code for better performance
+* Changed name to Seeloewen Sync
 * Fixed Profile Editor having wrong window title
 * Fixed overwritten profiles not being saved correctly
+* Fixed Folder Browser Dialogs not listing all folders
 
 Version 0.3.1-b (05.06.2022)
 * Fixed critical lag spike issue

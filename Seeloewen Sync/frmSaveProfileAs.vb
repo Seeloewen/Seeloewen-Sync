@@ -1,72 +1,88 @@
 ﻿Public Class frmSaveProfileAs
 
-    Dim Element1 As String
-    Dim Element2 As String
-    Dim SyncDirection As String
-    Dim SyncType As String
+    Dim element1 As String
+    Dim element2 As String
+    Dim syncDirection As String
+    Dim syncType As String
+
+    '-- Event handlers --
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        'Begin saving the profile
         SaveProfile(tbSaveProfileAs.Text)
     End Sub
 
-    Public Sub SaveProfile(ProfileName)
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        'Close window
+        Close()
+    End Sub
+
+    Private Sub frmSaveProfileAs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Clear existing text when form opens
+        tbSaveProfileAs.Clear()
+    End Sub
+
+    '-- Custom methods --
+
+    Public Sub SaveProfile(profileName)
+        'If tab page "folder" is selected
         If frmMain.tcMain.SelectedIndex = 0 Then
+            'Save folder 1 and folder 2
             If String.IsNullOrEmpty(frmMain.tbFolder1.Text) Then
-                Element1 = "None"
+                element1 = "None"
             Else
-                Element1 = frmMain.tbFolder1.Text
+                element1 = frmMain.tbFolder1.Text
             End If
             If String.IsNullOrEmpty(frmMain.tbFolder2.Text) Then
-                Element2 = "None"
+                element2 = "None"
             Else
-                Element2 = frmMain.tbFolder2.Text
+                element2 = frmMain.tbFolder2.Text
             End If
 
-            SyncDirection = frmMain.folderSyncDirection
+            'Save folder sync direction
+            syncDirection = frmMain.folderSyncDirection
 
-            If frmMain.tcMain.SelectedIndex = 0 Then
-                SyncType = "Folder"
-            ElseIf frmMain.tcMain.SelectedIndex = 1 Then
-                SyncType = "File"
-            Else
-                SyncType = "Folder"
-            End If
+            'Save sync type
+            syncType = "Folder"
+
+            'If tab page "file" is selected
         ElseIf frmMain.tcMain.SelectedIndex = 1 Then
+
+            'Save file 1 and file 2
             If String.IsNullOrEmpty(frmMain.tbFile1.Text) Then
-                Element1 = "None"
+                element1 = "None"
             Else
-                Element1 = frmMain.tbFile1.Text
+                element1 = frmMain.tbFile1.Text
             End If
             If String.IsNullOrEmpty(frmMain.tbFile2.Text) Then
-                Element2 = "None"
+                element2 = "None"
             Else
-                Element2 = frmMain.tbFile2.Text
+                element2 = frmMain.tbFile2.Text
             End If
 
-            SyncDirection = frmMain.fileSyncDirection
+            'Save file sync direction
+            syncDirection = frmMain.fileSyncDirection
 
-            If frmMain.tcMain.SelectedIndex = 0 Then
-                SyncType = "Folder"
-            ElseIf frmMain.tcMain.SelectedIndex = 1 Then
-                SyncType = "File"
-            Else
-                SyncType = "Folder"
-            End If
+            'Save sync type
+            syncType = "File"
         End If
 
-        If String.IsNullOrEmpty(ProfileName) = False Then
-            If My.Computer.FileSystem.DirectoryExists(frmMain.appData + "\SealSync\Profiles") Then
-                If My.Computer.FileSystem.FileExists(frmMain.appData + "\SealSync\Profiles\" + ProfileName + ".txt") Then
+        'Saves the profile. It checks if the profile already exists or not. If it exists, it will show a warning, otherwise it will not.
+        'It will then create a text file with the name set in ProfileName and write the content of the variable to the file.
+        'It will show an error if ProfileName is empty or ProfileDirectory doesn't exist.
+        If String.IsNullOrEmpty(profileName) = False Then
+            If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
+                If My.Computer.FileSystem.FileExists(frmMain.profileDirectory + profileName + ".txt") Then
                     Select Case MessageBox.Show("A profile with this name already exists. Do you want to override it?", "Profile already exists", MessageBoxButtons.YesNo)
                         Case Windows.Forms.DialogResult.Yes
-                            My.Computer.FileSystem.WriteAllText(frmMain.appData + "\SealSync\Profiles\" + ProfileName + ".txt", Element1 + vbNewLine + Element2 + vbNewLine + SyncDirection + vbNewLine + SyncType, False)
+                            My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
                             MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
                             Close()
                         Case Windows.Forms.DialogResult.No
                             MsgBox("Profile was not overwritten. Please select a different profile name.", MsgBoxStyle.Exclamation, "Profile not overwritten.")
                     End Select
                 Else
-                    My.Computer.FileSystem.WriteAllText(frmMain.appData + "\SealSync\Profiles\" + ProfileName + ".txt", Element1 + vbNewLine + Element2 + vbNewLine + SyncDirection + vbNewLine + SyncType, False)
+                    My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
                     MsgBox("Profile was saved.", MsgBoxStyle.Information, "Saved")
                     Close()
                 End If
@@ -79,66 +95,57 @@
     End Sub
 
     Public Sub UpdateProfile(ProfileName)
+        'If tab page "folder" is selected
         If frmMain.tcMain.SelectedIndex = 0 Then
+            'Save folder 1 and folder 2
             If String.IsNullOrEmpty(frmMain.tbFolder1.Text) Then
-                Element1 = "None"
+                element1 = "None"
             Else
-                Element1 = frmMain.tbFolder1.Text
+                element1 = frmMain.tbFolder1.Text
             End If
             If String.IsNullOrEmpty(frmMain.tbFolder2.Text) Then
-                Element2 = "None"
+                element2 = "None"
             Else
-                Element2 = frmMain.tbFolder2.Text
+                element2 = frmMain.tbFolder2.Text
             End If
 
-            SyncDirection = frmMain.folderSyncDirection
+            'Save folder sync direction
+            syncDirection = frmMain.folderSyncDirection
 
-            If frmMain.tcMain.SelectedIndex = 0 Then
-                SyncType = "Folder"
-            ElseIf frmMain.tcMain.SelectedIndex = 1 Then
-                SyncType = "File"
-            Else
-                SyncType = "Folder"
-            End If
+            'Save sync type
+            syncType = "Folder"
+
+            'If tab page "file" is selected
         ElseIf frmMain.tcMain.SelectedIndex = 1 Then
+
+            'Save file 1 and file 2
             If String.IsNullOrEmpty(frmMain.tbFile1.Text) Then
-                Element1 = "None"
+                element1 = "None"
             Else
-                Element1 = frmMain.tbFile1.Text
+                element1 = frmMain.tbFile1.Text
             End If
             If String.IsNullOrEmpty(frmMain.tbFile2.Text) Then
-                Element2 = "None"
+                element2 = "None"
             Else
-                Element2 = frmMain.tbFile2.Text
+                element2 = frmMain.tbFile2.Text
             End If
 
-            SyncDirection = frmMain.fileSyncDirection
+            'Save file sync direction
+            syncDirection = frmMain.fileSyncDirection
 
-            If frmMain.tcMain.SelectedIndex = 0 Then
-                SyncType = "Folder"
-            ElseIf frmMain.tcMain.SelectedIndex = 1 Then
-                SyncType = "File"
-            Else
-                SyncType = "Folder"
-            End If
+            'Save sync type
+            syncType = "File"
         End If
 
+        'Update the selected profile. This will save and overwrite the selected profile without showing any warning or message. Used if a profile is old or corrupted.
         If String.IsNullOrEmpty(ProfileName) = False Then
-            If My.Computer.FileSystem.DirectoryExists(frmMain.AppData + "\SealSync\Profiles") Then
-                My.Computer.FileSystem.WriteAllText(frmMain.appData + "\SealSync\Profiles\" + ProfileName + ".txt", Element1 + vbNewLine + Element2 + vbNewLine + SyncDirection + vbNewLine + SyncType, False)
+            If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
+                My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + ProfileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
             Else
                 MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
             End If
         Else
             MsgBox("Error: Couldn't update profile as the name is empty.", MsgBoxStyle.Critical, "Error")
         End If
-    End Sub
-
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        Close()
-    End Sub
-
-    Private Sub frmSaveProfileAs_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tbSaveProfileAs.Clear()
     End Sub
 End Class

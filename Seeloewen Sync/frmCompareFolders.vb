@@ -176,6 +176,7 @@ Public Class frmCompareFolders
                 End If
             End If
 
+            'Set colors of the folder content
             If itm.Tag = "new" Then
                 itm.ForeColor = Color.Green
             ElseIf itm.Tag = "unchanged" Then
@@ -317,6 +318,7 @@ Public Class frmCompareFolders
                 End If
             End If
 
+            'Set colors of the folder content
             If itm.Tag = "new" Then
                 itm.ForeColor = Color.Green
             ElseIf itm.Tag = "unchanged" Then

@@ -65,10 +65,10 @@ Partial Class frmAbout
         Me.llblGithub.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.llblGithub.Location = New System.Drawing.Point(18, 392)
         Me.llblGithub.Name = "llblGithub"
-        Me.llblGithub.Size = New System.Drawing.Size(137, 20)
+        Me.llblGithub.Size = New System.Drawing.Size(188, 20)
         Me.llblGithub.TabIndex = 2
         Me.llblGithub.TabStop = True
-        Me.llblGithub.Text = "SealSync - Github"
+        Me.llblGithub.Text = "Seeloewen Sync - Github"
         '
         'gbLicense
         '
