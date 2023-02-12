@@ -218,7 +218,7 @@ Partial Class frmCompareFiles
         Me.gbFile2.Size = New System.Drawing.Size(334, 309)
         Me.gbFile2.TabIndex = 34
         Me.gbFile2.TabStop = False
-        Me.gbFile2.Text = "File 1"
+        Me.gbFile2.Text = "File 2"
         '
         'rtbFileContent2
         '
@@ -237,7 +237,7 @@ Partial Class frmCompareFiles
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(781, 461)
+        Me.ClientSize = New System.Drawing.Size(781, 448)
         Me.Controls.Add(Me.gbFile2)
         Me.Controls.Add(Me.pbSyncDirection)
         Me.Controls.Add(Me.lblFileSize2)

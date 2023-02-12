@@ -14,7 +14,7 @@ Public Class frmProfileEditor
         'Set SyncType depending on radiobutton selection
         If rbtnFolder.Checked = True Then
             syncType = "Folder"
-        ElseIf rbtnFolder.Checked = True Then
+        ElseIf rbtnFile.Checked = True Then
             syncType = "File"
         End If
 
@@ -123,7 +123,7 @@ Public Class frmProfileEditor
         syncDirection = profileContent(2)
         If syncDirection = "Down" Then
             btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
-        ElseIf frmMain.folderSyncDirection = "Up" Then
+        ElseIf syncDirection = "Up" Then
             btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
         End If
         syncType = profileContent(3)
