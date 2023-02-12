@@ -12,11 +12,15 @@ Public Class frmCompareFolders
     ' -- Event handlers --
 
     Private Sub frmCompareFolders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Display name of folders
+        lblSubHeader1.Text = frmMain.tbFolder1.Text
+        lblSubHeader2.Text = frmMain.tbFolder2.Text
+
         'Sets up the window based on the sync direction in frmMain
-        syncDirectionOverwrite = frmMain.SyncDirection
-        SetSyncDirection(frmMain.SyncDirection)
-        AddContentToLv1(frmMain.SyncDirection)
-        AddContentToLv2(frmMain.SyncDirection)
+        syncDirectionOverwrite = frmMain.folderSyncDirection
+        SetSyncDirection(frmMain.folderSyncDirection)
+        AddContentToLv1(frmMain.folderSyncDirection)
+        AddContentToLv2(frmMain.folderSyncDirection)
     End Sub
 
     Private Sub btnToggleSyncDirection_Click(sender As Object, e As EventArgs) Handles btnToggleSyncDirection.Click
