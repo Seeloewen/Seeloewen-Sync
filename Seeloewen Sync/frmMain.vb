@@ -111,8 +111,10 @@ Public Class frmMain
         If String.IsNullOrEmpty(tbFolder1.Text) Or String.IsNullOrEmpty(tbFolder2.Text) Then
             MsgBox("Please specify a folder 1 and a folder 2", MsgBoxStyle.Critical, "Error")
         Else
-            If My.Computer.FileSystem.DirectoryExists(tbFolder1.Text) = False Or My.Computer.FileSystem.DirectoryExists(tbFolder2.Text) = False Then
+            If My.Computer.FileSystem.DirectoryExists(tbFolder1.Text) And My.Computer.FileSystem.DirectoryExists(tbFolder2.Text) Then
                 frmCompareFolders.Show()
+            Else
+                MsgBox("Please ensure that the directories you entered are valid.", MsgBoxStyle.Critical, "Error")
             End If
         End If
     End Sub
