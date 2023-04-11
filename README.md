@@ -13,5 +13,4 @@ It's simple, easy to use and free. Since it's open-source, you'll also be able t
 - Compare folders or files to see what changed (Preview of folder/file content and size)
 
 ## Planned features
-- Synchronize multiple folders with one click
 - Live synchronization
