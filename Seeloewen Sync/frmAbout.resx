@@ -129,7 +129,10 @@ You should have received a copy of the GNU General Public License long with this
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Version 0.4.0-b (12.02.2023)
+    <value>Version 0.4.1-b (xx.xx.xxxx)
+* Fixed folder comparer not opening at all
+
+Version 0.4.0-b (12.02.2023)
 + Added folder comparer
 + Added file synchronization
 + Added file comparer
