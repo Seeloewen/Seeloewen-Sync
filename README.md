@@ -1,7 +1,7 @@
 # Seeloewen Sync
 Simple folder synchronizer by Seeloewen
 
-Warning: This software is still in beta development and has many issues and work-in-progress features. Use with caution. Data loss should not occur and im very sorry if it, but you'll take the responsibility.
+Warning: This software is still in beta development and has many issues and work-in-progress features. Use with caution. Data loss should not occur and im very sorry if it does, but you'll take the responsibility. The developer, Seeloewen, is not responsible for any damage done by the software.
 
 Seeloewen Sync allows you to synchronize to folders with one simple click.
 
