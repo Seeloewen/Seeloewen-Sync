@@ -129,8 +129,12 @@ You should have received a copy of the GNU General Public License long with this
 </value>
   </data>
   <data name="RichTextBox1.Text" xml:space="preserve">
-    <value>Version 0.4.1-b (xx.xx.xxxx)
-* Fixed folder comparer not opening at all
+    <value>Version 0.4.1-b (30.10.2023)
+* Fixed Rewrite file synchronization to fix "Access denied" errors
+* Fixed target file getting deleted if file synchronization fails
+* Fixed "Synchronization completed successfully" message showing twice
+* Fixed Folder Comparer not opening at all
+* Fixed File 1 being displayed as "File 2"
 
 Version 0.4.0-b (12.02.2023)
 + Added folder comparer

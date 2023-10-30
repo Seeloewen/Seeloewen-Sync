@@ -47,7 +47,7 @@ Partial Class frmAbout
         Me.lblVersion.Name = "lblVersion"
         Me.lblVersion.Size = New System.Drawing.Size(273, 29)
         Me.lblVersion.TabIndex = 0
-        Me.lblVersion.Text = "Seeloewen Sync 0.4.0-b"
+        Me.lblVersion.Text = "Seeloewen Sync 0.4.1-b"
         '
         'lblDescription
         '
