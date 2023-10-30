@@ -155,8 +155,10 @@ Public Class frmMain
             Try
                 If fileSyncDirection = "Down" Then
                     SyncFile(tbFile1.Text, tbFile2.Text)
+                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
                 ElseIf fileSyncDirection = "Up" Then
                     SyncFile(tbFile2.Text, tbFile1.Text)
+                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
                 End If
             Catch execptionSync As Exception
                 MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
@@ -184,14 +186,12 @@ Public Class frmMain
         System.IO.Directory.Delete(targetFolder, True)
         My.Computer.FileSystem.CreateDirectory(targetFolder)
         My.Computer.FileSystem.CopyDirectory(sourceFolder, targetFolder)
-        MsgBox("Sync completed successfully!", MsgBoxStyle.Information, "Success")
     End Sub
 
     Private Sub SyncFile(sourceFile As String, targetFile As String)
         'Delete target file and copy source file to target directory
         File.Delete(targetFile)
         File.Copy(sourceFile, Path.Combine(Path.GetDirectoryName(targetFile), Path.GetFileName(sourceFile)), True)
-        MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
     End Sub
 
     Sub GetFiles(path As String)
