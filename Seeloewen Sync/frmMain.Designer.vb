@@ -40,10 +40,12 @@ Partial Class frmMain
         Me.btnCompareFolders = New System.Windows.Forms.Button()
         Me.tcMain = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.btnChangeSyncDirectionFolders = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.lblFile1 = New System.Windows.Forms.Label()
         Me.btnCompareFiles = New System.Windows.Forms.Button()
         Me.lblFile2 = New System.Windows.Forms.Label()
+        Me.btnChangeSyncDirectionFiles = New System.Windows.Forms.Button()
         Me.tbFile1 = New System.Windows.Forms.TextBox()
         Me.tbFile2 = New System.Windows.Forms.TextBox()
         Me.btnBrowseFile2 = New System.Windows.Forms.Button()
@@ -51,8 +53,6 @@ Partial Class frmMain
         Me.btnSyncFiles = New System.Windows.Forms.Button()
         Me.ofdFile1 = New System.Windows.Forms.OpenFileDialog()
         Me.ofdFile2 = New System.Windows.Forms.OpenFileDialog()
-        Me.btnChangeSyncDirectionFolders = New System.Windows.Forms.Button()
-        Me.btnChangeSyncDirectionFiles = New System.Windows.Forms.Button()
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.tcMain.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -224,6 +224,16 @@ Partial Class frmMain
         Me.TabPage1.Text = "Folders"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'btnChangeSyncDirectionFolders
+        '
+        Me.btnChangeSyncDirectionFolders.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirectionFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnChangeSyncDirectionFolders.Location = New System.Drawing.Point(192, 70)
+        Me.btnChangeSyncDirectionFolders.Name = "btnChangeSyncDirectionFolders"
+        Me.btnChangeSyncDirectionFolders.Size = New System.Drawing.Size(53, 42)
+        Me.btnChangeSyncDirectionFolders.TabIndex = 13
+        Me.btnChangeSyncDirectionFolders.UseVisualStyleBackColor = True
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.lblFile1)
@@ -252,7 +262,7 @@ Partial Class frmMain
         Me.lblFile1.Name = "lblFile1"
         Me.lblFile1.Size = New System.Drawing.Size(42, 16)
         Me.lblFile1.TabIndex = 15
-        Me.lblFile1.Text = "File 2:"
+        Me.lblFile1.Text = "File 1:"
         '
         'btnCompareFiles
         '
@@ -273,6 +283,16 @@ Partial Class frmMain
         Me.lblFile2.Size = New System.Drawing.Size(42, 16)
         Me.lblFile2.TabIndex = 16
         Me.lblFile2.Text = "File 2:"
+        '
+        'btnChangeSyncDirectionFiles
+        '
+        Me.btnChangeSyncDirectionFiles.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirectionFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnChangeSyncDirectionFiles.Location = New System.Drawing.Point(192, 70)
+        Me.btnChangeSyncDirectionFiles.Name = "btnChangeSyncDirectionFiles"
+        Me.btnChangeSyncDirectionFiles.Size = New System.Drawing.Size(53, 42)
+        Me.btnChangeSyncDirectionFiles.TabIndex = 22
+        Me.btnChangeSyncDirectionFiles.UseVisualStyleBackColor = True
         '
         'tbFile1
         '
@@ -327,26 +347,6 @@ Partial Class frmMain
         'ofdFile2
         '
         Me.ofdFile2.Title = "Select file 2..."
-        '
-        'btnChangeSyncDirectionFolders
-        '
-        Me.btnChangeSyncDirectionFolders.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
-        Me.btnChangeSyncDirectionFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnChangeSyncDirectionFolders.Location = New System.Drawing.Point(192, 70)
-        Me.btnChangeSyncDirectionFolders.Name = "btnChangeSyncDirectionFolders"
-        Me.btnChangeSyncDirectionFolders.Size = New System.Drawing.Size(53, 42)
-        Me.btnChangeSyncDirectionFolders.TabIndex = 13
-        Me.btnChangeSyncDirectionFolders.UseVisualStyleBackColor = True
-        '
-        'btnChangeSyncDirectionFiles
-        '
-        Me.btnChangeSyncDirectionFiles.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
-        Me.btnChangeSyncDirectionFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnChangeSyncDirectionFiles.Location = New System.Drawing.Point(192, 70)
-        Me.btnChangeSyncDirectionFiles.Name = "btnChangeSyncDirectionFiles"
-        Me.btnChangeSyncDirectionFiles.Size = New System.Drawing.Size(53, 42)
-        Me.btnChangeSyncDirectionFiles.TabIndex = 22
-        Me.btnChangeSyncDirectionFiles.UseVisualStyleBackColor = True
         '
         'btnSettings
         '
