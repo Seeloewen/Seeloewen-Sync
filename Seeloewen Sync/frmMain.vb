@@ -187,15 +187,31 @@ Public Class frmMain
 
     Private Sub SyncFolder(sourceFolder As String, targetFolder As String)
         'Delete target folder and copy source folder to target directory
-        System.IO.Directory.Delete(targetFolder, True)
+        Directory.Delete(targetFolder, True)
         My.Computer.FileSystem.CreateDirectory(targetFolder)
         My.Computer.FileSystem.CopyDirectory(sourceFolder, targetFolder)
     End Sub
 
     Private Sub SyncFile(sourceFile As String, targetFile As String)
-        'Delete target file and copy source file to target directory
-        File.Copy(sourceFile, Path.Combine(Path.GetDirectoryName(targetFile), Path.GetFileName(sourceFile)), True)
+        Try
+            'Copy all bytes from the source file to the target file
+            Using sourceStream As FileStream = File.Open(sourceFile, FileMode.Open, FileAccess.Read, FileShare.Read)
+                Using targetStream As FileStream = File.Open(targetFile, FileMode.Create, FileAccess.Write, FileShare.None)
+                    Dim buffer As Byte() = New Byte(4096) {}
+                    Dim bytesRead As Integer
+                    Do
+                        bytesRead = sourceStream.Read(buffer, 0, buffer.Length)
+                        If bytesRead > 0 Then
+                            targetStream.Write(buffer, 0, bytesRead)
+                        End If
+                    Loop While bytesRead > 0
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
+
 
     Sub GetFiles(path As String)
         'Get all profiles in the profile directory and list profiles in combobox for default profiles
