@@ -14,3 +14,6 @@ It's simple, easy to use and free. Since it's open-source, you'll also be able t
 
 ## Planned features
 - Live synchronization
+- Debug log
+- Major redesign
+- Translation support
