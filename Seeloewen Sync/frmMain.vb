@@ -151,18 +151,22 @@ Public Class frmMain
         ElseIf String.IsNullOrEmpty(tbFile1.Text) Then
             MsgBox("Error: File 2 cannot be empty.", MsgBoxStyle.Critical, "Error")
         Else
-            'Start synchronization of files depending on sync direction
-            Try
-                If fileSyncDirection = "Down" Then
-                    SyncFile(tbFile1.Text, tbFile2.Text)
-                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
-                ElseIf fileSyncDirection = "Up" Then
-                    SyncFile(tbFile2.Text, tbFile1.Text)
-                    MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
-                End If
-            Catch execptionSync As Exception
-                MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
-            End Try
+            If (File.Exists(tbFile1.Text) And File.Exists(tbFile2.Text)) Then
+                'Start synchronization of files depending on sync direction
+                Try
+                    If fileSyncDirection = "Down" Then
+                        SyncFile(tbFile1.Text, tbFile2.Text)
+                        MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
+                    ElseIf fileSyncDirection = "Up" Then
+                        SyncFile(tbFile2.Text, tbFile1.Text)
+                        MsgBox("Synchronization completed successfully!", MsgBoxStyle.Information, "Success")
+                    End If
+                Catch execptionSync As Exception
+                    MsgBox(execptionSync.Message, MsgBoxStyle.Critical, "Error")
+                End Try
+            Else
+                MsgBox("Error: Please ensure that both of the files exist.")
+            End If
         End If
     End Sub
 
@@ -190,7 +194,6 @@ Public Class frmMain
 
     Private Sub SyncFile(sourceFile As String, targetFile As String)
         'Delete target file and copy source file to target directory
-        File.Delete(targetFile)
         File.Copy(sourceFile, Path.Combine(Path.GetDirectoryName(targetFile), Path.GetFileName(sourceFile)), True)
     End Sub
 
