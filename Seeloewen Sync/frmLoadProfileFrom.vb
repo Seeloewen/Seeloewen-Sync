@@ -51,7 +51,11 @@ Public Class frmLoadProfileFrom
 
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
         'Begin loading profiles
-        InitializeLoadingProfile(cbxProfiles.SelectedItem, True)
+        Try
+            InitializeLoadingProfile(cbxProfiles.SelectedItem, True)
+        Catch ex As Exception
+            MsgBox(String.Format("Could not load profiles. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     Public Sub InitializeLoadingProfile(profile As String, showMessage As Boolean)

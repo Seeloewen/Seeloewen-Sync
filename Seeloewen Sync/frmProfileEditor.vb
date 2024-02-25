@@ -11,21 +11,26 @@ Public Class frmProfileEditor
     '-- Event handlers --
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'Set SyncType depending on radiobutton selection
-        If rbtnFolder.Checked = True Then
-            syncType = "Folder"
-        ElseIf rbtnFile.Checked = True Then
-            syncType = "File"
-        End If
+        Try
+            'Set SyncType depending on radiobutton selection
+            If rbtnFolder.Checked = True Then
+                syncType = "Folder"
+            ElseIf rbtnFile.Checked = True Then
+                syncType = "File"
+            End If
 
-        'Write the settings to the profile file
-        If String.IsNullOrEmpty(cbxProfile.SelectedItem) = False Then
-            My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory)
-            My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + cbxProfile.SelectedItem + ".txt", tbElement1.Text + vbNewLine + tbElement2.Text + vbNewLine + syncDirection + vbNewLine + syncType, False)
-            MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
-        Else
-            MsgBox("Error: Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
-        End If
+            'Write the settings to the profile file
+            If String.IsNullOrEmpty(cbxProfile.SelectedItem) = False Then
+                My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory)
+                My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + cbxProfile.SelectedItem + ".txt", tbElement1.Text + vbNewLine + tbElement2.Text + vbNewLine + syncDirection + vbNewLine + syncType, False)
+                MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
+            Else
+                MsgBox("Error: Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+            End If
+        Catch ex As Exception
+            MsgBox(String.Format("Could not save the profile. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
+
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -46,7 +51,11 @@ Public Class frmProfileEditor
 
     Private Sub cbxProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxProfile.SelectedIndexChanged
         'Load profile when selected index changes
-        InitializeLoadingProfile(cbxProfile.SelectedItem, False)
+        Try
+            InitializeLoadingProfile(cbxProfile.SelectedItem, False)
+        Catch ex As Exception
+            MsgBox(String.Format("Could not load profile. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     Private Sub frmProfileEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load

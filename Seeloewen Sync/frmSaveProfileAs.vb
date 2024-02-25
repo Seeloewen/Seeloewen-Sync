@@ -70,28 +70,32 @@
         'Saves the profile. It checks if the profile already exists or not. If it exists, it will show a warning, otherwise it will not.
         'It will then create a text file with the name set in ProfileName and write the content of the variable to the file.
         'It will show an error if ProfileName is empty or ProfileDirectory doesn't exist.
-        If String.IsNullOrEmpty(profileName) = False Then
-            If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
-                If My.Computer.FileSystem.FileExists(frmMain.profileDirectory + profileName + ".txt") Then
-                    Select Case MessageBox.Show("A profile with this name already exists. Do you want to override it?", "Profile already exists", MessageBoxButtons.YesNo)
-                        Case Windows.Forms.DialogResult.Yes
-                            My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
-                            MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
-                            Close()
-                        Case Windows.Forms.DialogResult.No
-                            MsgBox("Profile was not overwritten. Please select a different profile name.", MsgBoxStyle.Exclamation, "Profile not overwritten.")
-                    End Select
+        Try
+            If String.IsNullOrEmpty(profileName) = False Then
+                If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
+                    If My.Computer.FileSystem.FileExists(frmMain.profileDirectory + profileName + ".txt") Then
+                        Select Case MessageBox.Show("A profile with this name already exists. Do you want to override it?", "Profile already exists", MessageBoxButtons.YesNo)
+                            Case Windows.Forms.DialogResult.Yes
+                                My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
+                                MsgBox("Profile was overwritten and saved.", MsgBoxStyle.Information, "Overwritten and saved")
+                                Close()
+                            Case Windows.Forms.DialogResult.No
+                                MsgBox("Profile was not overwritten. Please select a different profile name.", MsgBoxStyle.Exclamation, "Profile not overwritten.")
+                        End Select
+                    Else
+                        My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
+                        MsgBox("Profile was saved.", MsgBoxStyle.Information, "Saved")
+                        Close()
+                    End If
                 Else
-                    My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + profileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
-                    MsgBox("Profile was saved.", MsgBoxStyle.Information, "Saved")
-                    Close()
+                    MsgBox("Error: Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
                 End If
             Else
-                MsgBox("Error: Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+                MsgBox("Error: Profile name is empty. Please enter a profile name.", MsgBoxStyle.Critical, "Error")
             End If
-        Else
-            MsgBox("Error: Profile name is empty. Please enter a profile name.", MsgBoxStyle.Critical, "Error")
-        End If
+        Catch ex As Exception
+            MsgBox(String.Format("Could not save the profile. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     Public Sub UpdateProfile(ProfileName)
@@ -137,15 +141,19 @@
             syncType = "File"
         End If
 
-        'Update the selected profile. This will save and overwrite the selected profile without showing any warning or message. Used if a profile is old or corrupted.
-        If String.IsNullOrEmpty(ProfileName) = False Then
-            If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
-                My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + ProfileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
+        Try
+            'Update the selected profile. This will save and overwrite the selected profile without showing any warning or message. Used if a profile is old or corrupted.
+            If String.IsNullOrEmpty(ProfileName) = False Then
+                If My.Computer.FileSystem.DirectoryExists(frmMain.profileDirectory) Then
+                    My.Computer.FileSystem.WriteAllText(frmMain.profileDirectory + ProfileName + ".txt", element1 + vbNewLine + element2 + vbNewLine + syncDirection + vbNewLine + syncType, False)
+                Else
+                    MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+                End If
             Else
-                MsgBox("Error: Couldn't update profile. Profile directory does not exist. Please restart the application.", MsgBoxStyle.Critical, "Error")
+                MsgBox("Error: Couldn't update profile as the name is empty.", MsgBoxStyle.Critical, "Error")
             End If
-        Else
-            MsgBox("Error: Couldn't update profile as the name is empty.", MsgBoxStyle.Critical, "Error")
-        End If
+        Catch ex As Exception
+            MsgBox(String.Format("Could not update the profile. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 End Class

@@ -48,287 +48,295 @@ Public Class frmCompareFolders
     End Sub
 
     Private Sub AddContentToLv1(syncDirection As String)
-        'Clear existing entries
-        lv1.Items.Clear()
+        Try
+            'Clear existing entries
+            lv1.Items.Clear()
 
-        'Get all files
-        Dim files As String() = Directory.GetFiles(directory1)
+            'Get all files
+            Dim files As String() = Directory.GetFiles(directory1)
 
-        'Go through each file
-        For Each element As String In files
+            'Go through each file
+            For Each element As String In files
 
-            Dim str(2) As String
-            Dim filename As String = Path.GetFileName(element)
-            str(0) = filename
-            str(1) = "File"
+                Dim str(2) As String
+                Dim filename As String = Path.GetFileName(element)
+                str(0) = filename
+                str(1) = "File"
 
-            'Sets the filesize and calculates the unit (Greatest unit: Petabyte, I hope noone has a file bigger than 999 PB lying around...)
-            Dim filesize As Long = FileLen(element)
-            Dim unit As String
-            If filesize > 1000 Then
-                filesize = filesize / 1000
-                unit = "KB"
+                'Sets the filesize and calculates the unit (Greatest unit: Petabyte, I hope noone has a file bigger than 999 PB lying around...)
+                Dim filesize As Long = FileLen(element)
+                Dim unit As String
                 If filesize > 1000 Then
                     filesize = filesize / 1000
-                    unit = "MB"
+                    unit = "KB"
                     If filesize > 1000 Then
                         filesize = filesize / 1000
-                        unit = "GB"
+                        unit = "MB"
                         If filesize > 1000 Then
                             filesize = filesize / 1000
-                            unit = "TB"
+                            unit = "GB"
                             If filesize > 1000 Then
                                 filesize = filesize / 1000
-                                unit = "PB"
+                                unit = "TB"
+                                If filesize > 1000 Then
+                                    filesize = filesize / 1000
+                                    unit = "PB"
+                                End If
                             End If
                         End If
                     End If
-                End If
-            Else
-                unit = "B"
-            End If
-            str(2) = filesize.ToString + " " + unit
-
-            'Determine what would happen to the file if it was synced based on the sync direction
-            Dim itm As New ListViewItem(str)
-            If syncDirection = "Up" Then
-                If My.Computer.FileSystem.FileExists(directory2 + "\" + filename) Then
-
-                    'Declare variables to hold the file paths
-                    Dim file1 As String = directory1 + "\" + filename
-                    Dim file2 As String = directory2 + "\" + filename
-
-                    'Read the contents of each file
-                    Dim contents1 As String = File.ReadAllText(file1)
-                    Dim contents2 As String = File.ReadAllText(file2)
-
-                    'Compare the contents of the two files
-                    If contents1 = contents2 Then
-                        itm.Tag = "unchanged"
-                    Else
-                        itm.Tag = "modified"
-                    End If
                 Else
-                    itm.Tag = "deleted"
+                    unit = "B"
                 End If
-            ElseIf syncDirection = "Down" Then
-                If My.Computer.FileSystem.FileExists(directory2 + "\" + filename) = False Then
-                    itm.Tag = "new"
-                End If
-            End If
+                str(2) = filesize.ToString + " " + unit
 
-            If itm.Tag = "new" Then
-                itm.ForeColor = Color.Green
-            ElseIf itm.Tag = "unchanged" Then
-                itm.ForeColor = Color.Black
-            ElseIf itm.Tag = "modified" Then
-                itm.ForeColor = Color.Blue
-            ElseIf itm.Tag = "deleted" Then
-                itm.ForeColor = Color.Red
-            End If
-            lv1.Items.Add(itm)
+                'Determine what would happen to the file if it was synced based on the sync direction
+                Dim itm As New ListViewItem(str)
+                If syncDirection = "Up" Then
+                    If My.Computer.FileSystem.FileExists(directory2 + "\" + filename) Then
 
-        Next
+                        'Declare variables to hold the file paths
+                        Dim file1 As String = directory1 + "\" + filename
+                        Dim file2 As String = directory2 + "\" + filename
 
-        'Add all folders
-        Dim folders As String() = Directory.GetDirectories(directory1)
-        For Each element As String In folders
-            Dim str(1) As String
-            Dim foldername As String = Path.GetFullPath(element).Replace(Path.GetDirectoryName(element) + "\", "")
+                        'Read the contents of each file
+                        Dim contents1 As String = File.ReadAllText(file1)
+                        Dim contents2 As String = File.ReadAllText(file2)
 
-            str(0) = foldername
-            str(1) = "Folder"
-
-            'Determine what would happen to the folder if it was synced based on the sync direction
-            Dim itm As New ListViewItem(str)
-            If syncDirection = "Up" Then
-                If My.Computer.FileSystem.DirectoryExists(directory2 + "\" + foldername) Then
-                    Dim files1 As String() = Directory.GetFiles(directory1 + "\" + foldername)
-                    Dim files2 As String() = Directory.GetFiles(directory2 + "\" + foldername)
-
-                    'Compare the lists of files
-                    If files1.Length = files2.Length Then
-                        If files1.Length > 0 Then
-                            For i As Integer = 0 To files1.Length - 1
-                                'Read the contents of each file
-                                Dim contents1 As String = File.ReadAllText(files1(i))
-                                Dim contents2 As String = File.ReadAllText(files2(i))
-
-                                'Compare the contents of the two files
-                                If contents1 = contents2 Then
-                                    itm.Tag = "unchanged"
-                                Else
-                                    itm.Tag = "modified"
-                                End If
-                            Next
-                        Else
+                        'Compare the contents of the two files
+                        If contents1 = contents2 Then
                             itm.Tag = "unchanged"
+                        Else
+                            itm.Tag = "modified"
                         End If
                     Else
-                        itm.Tag = "modified"
+                        itm.Tag = "deleted"
                     End If
-                Else
-                    itm.Tag = "deleted"
+                ElseIf syncDirection = "Down" Then
+                    If My.Computer.FileSystem.FileExists(directory2 + "\" + filename) = False Then
+                        itm.Tag = "new"
+                    End If
                 End If
-            ElseIf syncDirection = "Down" Then
-                If My.Computer.FileSystem.DirectoryExists(directory2 + "\" + foldername) = False Then
-                    itm.Tag = "new"
-                End If
-            End If
 
-            'Set colors of the folder content
-            If itm.Tag = "new" Then
-                itm.ForeColor = Color.Green
-            ElseIf itm.Tag = "unchanged" Then
-                itm.ForeColor = Color.Black
-            ElseIf itm.Tag = "modified" Then
-                itm.ForeColor = Color.Blue
-            ElseIf itm.Tag = "deleted" Then
-                itm.ForeColor = Color.Red
-            End If
-            lv1.Items.Add(itm)
-        Next
+                If itm.Tag = "new" Then
+                    itm.ForeColor = Color.Green
+                ElseIf itm.Tag = "unchanged" Then
+                    itm.ForeColor = Color.Black
+                ElseIf itm.Tag = "modified" Then
+                    itm.ForeColor = Color.Blue
+                ElseIf itm.Tag = "deleted" Then
+                    itm.ForeColor = Color.Red
+                End If
+                lv1.Items.Add(itm)
+
+            Next
+
+            'Add all folders
+            Dim folders As String() = Directory.GetDirectories(directory1)
+            For Each element As String In folders
+                Dim str(1) As String
+                Dim foldername As String = Path.GetFullPath(element).Replace(Path.GetDirectoryName(element) + "\", "")
+
+                str(0) = foldername
+                str(1) = "Folder"
+
+                'Determine what would happen to the folder if it was synced based on the sync direction
+                Dim itm As New ListViewItem(str)
+                If syncDirection = "Up" Then
+                    If My.Computer.FileSystem.DirectoryExists(directory2 + "\" + foldername) Then
+                        Dim files1 As String() = Directory.GetFiles(directory1 + "\" + foldername)
+                        Dim files2 As String() = Directory.GetFiles(directory2 + "\" + foldername)
+
+                        'Compare the lists of files
+                        If files1.Length = files2.Length Then
+                            If files1.Length > 0 Then
+                                For i As Integer = 0 To files1.Length - 1
+                                    'Read the contents of each file
+                                    Dim contents1 As String = File.ReadAllText(files1(i))
+                                    Dim contents2 As String = File.ReadAllText(files2(i))
+
+                                    'Compare the contents of the two files
+                                    If contents1 = contents2 Then
+                                        itm.Tag = "unchanged"
+                                    Else
+                                        itm.Tag = "modified"
+                                    End If
+                                Next
+                            Else
+                                itm.Tag = "unchanged"
+                            End If
+                        Else
+                            itm.Tag = "modified"
+                        End If
+                    Else
+                        itm.Tag = "deleted"
+                    End If
+                ElseIf syncDirection = "Down" Then
+                    If My.Computer.FileSystem.DirectoryExists(directory2 + "\" + foldername) = False Then
+                        itm.Tag = "new"
+                    End If
+                End If
+
+                'Set colors of the folder content
+                If itm.Tag = "new" Then
+                    itm.ForeColor = Color.Green
+                ElseIf itm.Tag = "unchanged" Then
+                    itm.ForeColor = Color.Black
+                ElseIf itm.Tag = "modified" Then
+                    itm.ForeColor = Color.Blue
+                ElseIf itm.Tag = "deleted" Then
+                    itm.ForeColor = Color.Red
+                End If
+                lv1.Items.Add(itm)
+            Next
+        Catch ex As Exception
+            MsgBox(String.Format("Could not add content to listView1. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     Private Sub AddContentToLv2(syncDirection As String)
-        'Clear existing entries
-        lv2.Items.Clear()
+        Try
+            'Clear existing entries
+            lv2.Items.Clear()
 
-        'Add all files
-        Dim files As String() = Directory.GetFiles(directory2)
-        For Each element As String In files
-            Dim str(2) As String
-            Dim filename As String = Path.GetFileName(element)
+            'Add all files
+            Dim files As String() = Directory.GetFiles(directory2)
+            For Each element As String In files
+                Dim str(2) As String
+                Dim filename As String = Path.GetFileName(element)
 
-            str(0) = filename
-            str(1) = "File"
+                str(0) = filename
+                str(1) = "File"
 
-            'Sets the filesize and calculates the unit (Greatest unit: Petabyte. Again: I hope noone has a file bigger than 999 PB lying around...)
-            Dim filesize As Long = FileLen(element)
-            Dim unit As String
-            If filesize > 1000 Then
-                filesize = filesize / 1000
-                unit = "KB"
+                'Sets the filesize and calculates the unit (Greatest unit: Petabyte. Again: I hope noone has a file bigger than 999 PB lying around...)
+                Dim filesize As Long = FileLen(element)
+                Dim unit As String
                 If filesize > 1000 Then
                     filesize = filesize / 1000
-                    unit = "MB"
+                    unit = "KB"
                     If filesize > 1000 Then
                         filesize = filesize / 1000
-                        unit = "GB"
+                        unit = "MB"
                         If filesize > 1000 Then
                             filesize = filesize / 1000
-                            unit = "TB"
+                            unit = "GB"
                             If filesize > 1000 Then
                                 filesize = filesize / 1000
-                                unit = "PB"
+                                unit = "TB"
+                                If filesize > 1000 Then
+                                    filesize = filesize / 1000
+                                    unit = "PB"
+                                End If
                             End If
                         End If
                     End If
-                End If
-            Else
-                unit = "B"
-            End If
-            str(2) = filesize.ToString + " " + unit
-
-            Dim itm As New ListViewItem(str)
-            'Determine what would happen to the file if it was synced based on the sync direction
-            If syncDirection = "Down" Then
-                If My.Computer.FileSystem.FileExists(directory1 + "\" + filename) Then
-
-                    'Declare variables to hold the file paths
-                    Dim file1 As String = directory1 + "\" + filename
-                    Dim file2 As String = directory2 + "\" + filename
-
-                    'Read the contents of each file
-                    Dim contents1 As String = File.ReadAllText(file1)
-                    Dim contents2 As String = File.ReadAllText(file2)
-
-                    'Compare the contents of the two files
-                    If contents1 = contents2 Then
-                        itm.Tag = "unchanged"
-                    Else
-                        itm.Tag = "modified"
-                    End If
                 Else
-                    itm.Tag = "deleted"
+                    unit = "B"
                 End If
-            ElseIf syncDirection = "Up" Then
-                If My.Computer.FileSystem.FileExists(directory1 + "\" + filename) = False Then
-                    itm.Tag = "new"
-                End If
-            End If
+                str(2) = filesize.ToString + " " + unit
 
-            If itm.Tag = "new" Then
-                itm.ForeColor = Color.Green
-            ElseIf itm.Tag = "unchanged" Then
-                itm.ForeColor = Color.Black
-            ElseIf itm.Tag = "modified" Then
-                itm.ForeColor = Color.Blue
-            ElseIf itm.Tag = "deleted" Then
-                itm.ForeColor = Color.Red
-            End If
+                Dim itm As New ListViewItem(str)
+                'Determine what would happen to the file if it was synced based on the sync direction
+                If syncDirection = "Down" Then
+                    If My.Computer.FileSystem.FileExists(directory1 + "\" + filename) Then
 
-            lv2.Items.Add(itm)
-        Next
+                        'Declare variables to hold the file paths
+                        Dim file1 As String = directory1 + "\" + filename
+                        Dim file2 As String = directory2 + "\" + filename
 
-        'Add all folders
-        Dim folders As String() = Directory.GetDirectories(directory2)
-        For Each element As String In folders
-            Dim str(1) As String
-            Dim foldername As String = Path.GetFullPath(element).Replace(Path.GetDirectoryName(element) + "\", "")
+                        'Read the contents of each file
+                        Dim contents1 As String = File.ReadAllText(file1)
+                        Dim contents2 As String = File.ReadAllText(file2)
 
-            str(0) = foldername
-            str(1) = "Folder"
-
-            Dim itm As New ListViewItem(str)
-
-            'Determine what would happen to the folder if it was synced based on the sync direction
-            If syncDirection = "Down" Then
-                If My.Computer.FileSystem.DirectoryExists(directory1 + "\" + foldername) Then
-                    Dim files1 As String() = Directory.GetFiles(directory1 + "\" + foldername)
-                    Dim files2 As String() = Directory.GetFiles(directory2 + "\" + foldername)
-
-                    'Compare the lists of files
-                    If files1.Length = files2.Length Then
-                        If files1.Length > 0 Then
-                            For i As Integer = 0 To files1.Length - 1
-                                'Read the contents of each file
-                                Dim contents1 As String = File.ReadAllText(files1(i))
-                                Dim contents2 As String = File.ReadAllText(files2(i))
-
-                                'Compare the contents of the two files
-                                If contents1 = contents2 Then
-                                    itm.Tag = "unchanged"
-                                Else
-                                    itm.Tag = "modified"
-                                End If
-                            Next
-                        Else
+                        'Compare the contents of the two files
+                        If contents1 = contents2 Then
                             itm.Tag = "unchanged"
+                        Else
+                            itm.Tag = "modified"
                         End If
                     Else
-                        itm.Tag = "modified"
+                        itm.Tag = "deleted"
                     End If
-                Else
-                    itm.Tag = "deleted"
+                ElseIf syncDirection = "Up" Then
+                    If My.Computer.FileSystem.FileExists(directory1 + "\" + filename) = False Then
+                        itm.Tag = "new"
+                    End If
                 End If
-            ElseIf syncDirection = "Up" Then
-                If My.Computer.FileSystem.DirectoryExists(directory1 + "\" + foldername) = False Then
-                    itm.Tag = "new"
-                End If
-            End If
 
-            'Set colors of the folder content
-            If itm.Tag = "new" Then
-                itm.ForeColor = Color.Green
-            ElseIf itm.Tag = "unchanged" Then
-                itm.ForeColor = Color.Black
-            ElseIf itm.Tag = "modified" Then
-                itm.ForeColor = Color.Blue
-            ElseIf itm.Tag = "deleted" Then
-                itm.ForeColor = Color.Red
-            End If
-            lv2.Items.Add(itm)
-        Next
+                If itm.Tag = "new" Then
+                    itm.ForeColor = Color.Green
+                ElseIf itm.Tag = "unchanged" Then
+                    itm.ForeColor = Color.Black
+                ElseIf itm.Tag = "modified" Then
+                    itm.ForeColor = Color.Blue
+                ElseIf itm.Tag = "deleted" Then
+                    itm.ForeColor = Color.Red
+                End If
+
+                lv2.Items.Add(itm)
+            Next
+
+            'Add all folders
+            Dim folders As String() = Directory.GetDirectories(directory2)
+            For Each element As String In folders
+                Dim str(1) As String
+                Dim foldername As String = Path.GetFullPath(element).Replace(Path.GetDirectoryName(element) + "\", "")
+
+                str(0) = foldername
+                str(1) = "Folder"
+
+                Dim itm As New ListViewItem(str)
+
+                'Determine what would happen to the folder if it was synced based on the sync direction
+                If syncDirection = "Down" Then
+                    If My.Computer.FileSystem.DirectoryExists(directory1 + "\" + foldername) Then
+                        Dim files1 As String() = Directory.GetFiles(directory1 + "\" + foldername)
+                        Dim files2 As String() = Directory.GetFiles(directory2 + "\" + foldername)
+
+                        'Compare the lists of files
+                        If files1.Length = files2.Length Then
+                            If files1.Length > 0 Then
+                                For i As Integer = 0 To files1.Length - 1
+                                    'Read the contents of each file
+                                    Dim contents1 As String = File.ReadAllText(files1(i))
+                                    Dim contents2 As String = File.ReadAllText(files2(i))
+
+                                    'Compare the contents of the two files
+                                    If contents1 = contents2 Then
+                                        itm.Tag = "unchanged"
+                                    Else
+                                        itm.Tag = "modified"
+                                    End If
+                                Next
+                            Else
+                                itm.Tag = "unchanged"
+                            End If
+                        Else
+                            itm.Tag = "modified"
+                        End If
+                    Else
+                        itm.Tag = "deleted"
+                    End If
+                ElseIf syncDirection = "Up" Then
+                    If My.Computer.FileSystem.DirectoryExists(directory1 + "\" + foldername) = False Then
+                        itm.Tag = "new"
+                    End If
+                End If
+
+                'Set colors of the folder content
+                If itm.Tag = "new" Then
+                    itm.ForeColor = Color.Green
+                ElseIf itm.Tag = "unchanged" Then
+                    itm.ForeColor = Color.Black
+                ElseIf itm.Tag = "modified" Then
+                    itm.ForeColor = Color.Blue
+                ElseIf itm.Tag = "deleted" Then
+                    itm.ForeColor = Color.Red
+                End If
+                lv2.Items.Add(itm)
+            Next
+        Catch ex As Exception
+            MsgBox(String.Format("Could not add content to listView2. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 End Class

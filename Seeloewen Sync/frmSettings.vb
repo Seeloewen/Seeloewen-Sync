@@ -49,7 +49,6 @@ Public Class frmSettings
         Catch ex As Exception
             MsgBox("Error: Could not load profiles. Please try again." + vbNewLine + "Exception: " + ex.Message)
         End Try
-
     End Sub
 
     Private Sub btnOpenProfileEditor_Click(sender As Object, e As EventArgs) Handles btnOpenProfileEditor.Click

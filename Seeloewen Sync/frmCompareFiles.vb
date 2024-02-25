@@ -12,13 +12,17 @@ Public Class frmCompareFiles
             pbSyncDirection.BackgroundImage = My.Resources.SyncLeft
         End If
 
-        'Get file infos
-        GetFileInfo1()
-        GetFileInfo2()
+        Try
+            'Get file infos
+            GetFileInfo1()
+            GetFileInfo2()
 
-        'Load file content
-        rtbFileContent1.Text = File.ReadAllText(frmMain.tbFile1.Text)
-        rtbFileContent2.Text = File.ReadAllText(frmMain.tbFile2.Text)
+            'Load file content
+            rtbFileContent1.Text = File.ReadAllText(frmMain.tbFile1.Text)
+            rtbFileContent2.Text = File.ReadAllText(frmMain.tbFile2.Text)
+        Catch ex As Exception
+            MsgBox(String.Format("Error while loading files. {0}", ex.Message), MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
     '-- Custom methods --
