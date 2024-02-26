@@ -65,7 +65,7 @@ Public Class frmProfileEditor
         tbElement2.Clear()
         syncDirection = "Down"
         syncType = "Folder"
-        btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+        btnChangeSyncDirection.BackgroundImage = My.Resources.imgSyncDown
         rbtnFolder.Checked = True
         lblElement1.Text = "Folder 1:"
         lblElement2.Text = "Folder 2:"
@@ -100,10 +100,10 @@ Public Class frmProfileEditor
         'Change sync direction variable and image on button
         If syncDirection = "Down" Then
             syncDirection = "Up"
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+            btnChangeSyncDirection.BackgroundImage = My.Resources.imgSyncUp
         ElseIf syncDirection = "Up" Then
             syncDirection = "Down"
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+            btnChangeSyncDirection.BackgroundImage = My.Resources.imgSyncDown
         End If
     End Sub
 
@@ -131,9 +131,9 @@ Public Class frmProfileEditor
         'Version 0.4.0
         syncDirection = profileContent(2)
         If syncDirection = "Down" Then
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncDown
+            btnChangeSyncDirection.BackgroundImage = My.Resources.imgSyncDown
         ElseIf syncDirection = "Up" Then
-            btnChangeSyncDirection.BackgroundImage = My.Resources.btnSyncUp
+            btnChangeSyncDirection.BackgroundImage = My.Resources.imgSyncUp
         End If
         syncType = profileContent(3)
         If syncType = "Folder" Then
@@ -163,7 +163,7 @@ Public Class frmProfileEditor
                     End If
                     If String.IsNullOrEmpty(profileContent(2)) Then
                         profileContent(2) = "Down"
-                        frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+                        frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncUp
                     End If
                     If String.IsNullOrEmpty(profileContent(3)) Then
                         profileContent(3) = "Folder"

@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\..\Media\btnSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnSyncDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSyncDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnSyncDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="btnSyncUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnSyncUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SyncLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSyncLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnSyncLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SyncRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSyncRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnSyncRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgSyncUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSyncUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

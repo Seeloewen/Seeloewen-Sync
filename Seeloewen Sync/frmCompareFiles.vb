@@ -7,9 +7,9 @@ Public Class frmCompareFiles
     Private Sub frmCompareFiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Display arrow based on sync direction in main window
         If frmMain.fileSyncDirection = "Down" Then
-            pbSyncDirection.BackgroundImage = My.Resources.SyncRight
+            pbSyncDirection.BackgroundImage = My.Resources.imgSyncRight
         ElseIf frmMain.fileSyncDirection = "Up" Then
-            pbSyncDirection.BackgroundImage = My.Resources.SyncLeft
+            pbSyncDirection.BackgroundImage = My.Resources.imgSyncLeft
         End If
 
         Try

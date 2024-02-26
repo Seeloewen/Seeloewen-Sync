@@ -41,9 +41,9 @@ Public Class frmCompareFolders
     Private Sub SetSyncDirection(syncDirection)
         'Based on sync direction, change the controls and swap Folder 1 and 2
         If syncDirection = "Down" Then
-            pbSyncDirection.BackgroundImage = My.Resources.SyncRight
+            pbSyncDirection.BackgroundImage = My.Resources.imgSyncRight
         ElseIf syncDirection = "Up" Then
-            pbSyncDirection.BackgroundImage = My.Resources.SyncLeft
+            pbSyncDirection.BackgroundImage = My.Resources.imgSyncLeft
         End If
     End Sub
 

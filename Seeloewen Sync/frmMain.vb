@@ -99,10 +99,10 @@ Public Class frmMain
         'Change sync direction variable and image on button for folders
         If folderSyncDirection = "Down" Then
             folderSyncDirection = "Up"
-            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncUp
         ElseIf folderSyncDirection = "Up" Then
             folderSyncDirection = "Down"
-            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncDown
+            btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncDown
         End If
     End Sub
 
@@ -135,10 +135,10 @@ Public Class frmMain
         'Change sync direction variable and image on button for files
         If fileSyncDirection = "Down" Then
             fileSyncDirection = "Up"
-            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncUp
+            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.imgSyncUp
         ElseIf fileSyncDirection = "Up" Then
             fileSyncDirection = "Down"
-            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncDown
+            btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.imgSyncDown
         End If
     End Sub
 

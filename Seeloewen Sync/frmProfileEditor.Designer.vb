@@ -111,7 +111,7 @@ Partial Class frmProfileEditor
         '
         'btnChangeSyncDirection
         '
-        Me.btnChangeSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.imgSyncDown
         Me.btnChangeSyncDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeSyncDirection.Location = New System.Drawing.Point(198, 82)
         Me.btnChangeSyncDirection.Name = "btnChangeSyncDirection"

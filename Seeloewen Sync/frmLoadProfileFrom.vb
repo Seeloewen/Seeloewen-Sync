@@ -82,9 +82,9 @@ Public Class frmLoadProfileFrom
             'Load sync direction into variable and load it in main window
             frmMain.folderSyncDirection = profileContent(2)
             If frmMain.folderSyncDirection = "Down" Then
-                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncDown
+                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncDown
             ElseIf frmMain.folderSyncDirection = "Up" Then
-                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+                frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncUp
             End If
 
             'Set selected tab page to "folder"
@@ -98,9 +98,9 @@ Public Class frmLoadProfileFrom
             'Load sync direction into variable and load it in main window
             frmMain.fileSyncDirection = profileContent(2)
             If frmMain.fileSyncDirection = "Down" Then
-                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncDown
+                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.imgSyncDown
             ElseIf frmMain.fileSyncDirection = "Up" Then
-                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.btnSyncUp
+                frmMain.btnChangeSyncDirectionFiles.BackgroundImage = My.Resources.imgSyncUp
             End If
 
             'Set selected tab page to "file"
@@ -129,7 +129,7 @@ Public Class frmLoadProfileFrom
                     End If
                     If String.IsNullOrEmpty(profileContent(2)) Then
                         profileContent(2) = "Down"
-                        frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.btnSyncUp
+                        frmMain.btnChangeSyncDirectionFolders.BackgroundImage = My.Resources.imgSyncUp
                     End If
                     If String.IsNullOrEmpty(profileContent(3)) Then
                         profileContent(3) = "Folder"

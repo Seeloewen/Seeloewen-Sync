@@ -63,9 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property btnSettings() As System.Drawing.Bitmap
+        Friend ReadOnly Property imgSettings() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("btnSettings", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("imgSettings", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -73,9 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property btnSyncDown() As System.Drawing.Bitmap
+        Friend ReadOnly Property imgSyncDown() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("btnSyncDown", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("imgSyncDown", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property btnSyncUp() As System.Drawing.Bitmap
+        Friend ReadOnly Property imgSyncLeft() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("btnSyncUp", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("imgSyncLeft", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,9 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property SyncLeft() As System.Drawing.Bitmap
+        Friend ReadOnly Property imgSyncRight() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("SyncLeft", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("imgSyncRight", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -103,9 +103,9 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property SyncRight() As System.Drawing.Bitmap
+        Friend ReadOnly Property imgSyncUp() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("SyncRight", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("imgSyncUp", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

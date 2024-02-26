@@ -226,7 +226,7 @@ Partial Class frmMain
         '
         'btnChangeSyncDirectionFolders
         '
-        Me.btnChangeSyncDirectionFolders.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirectionFolders.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.imgSyncDown
         Me.btnChangeSyncDirectionFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeSyncDirectionFolders.Location = New System.Drawing.Point(192, 70)
         Me.btnChangeSyncDirectionFolders.Name = "btnChangeSyncDirectionFolders"
@@ -286,7 +286,7 @@ Partial Class frmMain
         '
         'btnChangeSyncDirectionFiles
         '
-        Me.btnChangeSyncDirectionFiles.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSyncDown
+        Me.btnChangeSyncDirectionFiles.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.imgSyncDown
         Me.btnChangeSyncDirectionFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnChangeSyncDirectionFiles.Location = New System.Drawing.Point(192, 70)
         Me.btnChangeSyncDirectionFiles.Name = "btnChangeSyncDirectionFiles"
@@ -350,7 +350,7 @@ Partial Class frmMain
         '
         'btnSettings
         '
-        Me.btnSettings.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.btnSettings
+        Me.btnSettings.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.imgSettings
         Me.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSettings.Location = New System.Drawing.Point(432, 17)

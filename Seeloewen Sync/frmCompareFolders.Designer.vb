@@ -119,7 +119,7 @@ Partial Class frmCompareFolders
         '
         'pbSyncDirection
         '
-        Me.pbSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.SyncRight
+        Me.pbSyncDirection.BackgroundImage = Global.Seeloewen_Sync.My.Resources.Resources.imgSyncRight
         Me.pbSyncDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pbSyncDirection.Location = New System.Drawing.Point(305, 175)
         Me.pbSyncDirection.Name = "pbSyncDirection"
